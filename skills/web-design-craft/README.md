@@ -12,6 +12,16 @@ An English-language agent skill from the Cadence project, included in the Ulti S
 - Fluid modular type and spacing scales
 - A machine-readable direction record and observed viewport evidence
 
+## Visual example
+
+### Editorial web composition
+
+![Editorial web composition](../../.github/examples/web-design.png)
+
+An authored editorial landing-page example with asymmetric composition, a fluid type hierarchy and one clear visual direction. This is a fictional product, not a customer site.
+
+[Full-size image](../../.github/examples/web-design.png) · [HTML source](../../examples/landing.html) · [Reproduce the captures](../../examples/README.md)
+
 ## Install
 
 For a project-local Codex installation, run this from your project root (Git required):
@@ -33,9 +43,7 @@ Define the design direction for a research dashboard. Specify its grid, fluid ty
 
 ## Requirements and integration
 
-Use an agent that can read `SKILL.md` and local reference files. The instructions originated in Cadence; references to its application internals are architectural context, not files included in this repository. Cadence can expose references through `takt_skill_reference`; in other agents, read the supplied files directly. Other Cadence-specific tools, if mentioned, require that runtime.
-
-Cadence tool names used by this skill: `takt_skill_reference`.
+Use an agent that can read `SKILL.md`, project files and the local references supplied in this folder. Read reference files directly; no Cadence-specific reference tool is required.
 
 The bundled `.mjs` helpers require **Node.js 18 or newer** and have no npm dependencies. They run locally; no package installation is needed. Invoke them from this skill folder.
 
@@ -61,7 +69,6 @@ The instructions describe handoffs to these other skills in the same collection;
 - [Design Craft](https://github.com/hellinckx/ulti-skills/tree/main/skills/design-craft)
 - [Motion & Graphics](https://github.com/hellinckx/ulti-skills/tree/main/skills/motion-and-graphics)
 - [Responsive Evidence](https://github.com/hellinckx/ulti-skills/tree/main/skills/responsive-evidence)
-- [Cadence Design](https://github.com/hellinckx/ulti-skills/tree/main/skills/takt-design)
 - [Usability Review](https://github.com/hellinckx/ulti-skills/tree/main/skills/usability-review)
 
 ## Boundaries

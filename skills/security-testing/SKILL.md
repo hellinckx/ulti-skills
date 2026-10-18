@@ -110,7 +110,7 @@ Promoting scanner output to findings without reproduction · "fixed" with no reg
 - **project-structure / complete-app** — the regression tests and the findings file live in the project's test and docs structure; the release gate joins the acceptance checklist.
 
 ## Reference files (read on demand)
-In Cadence, call `takt_skill_reference` with `skill: "security-testing"` and one of:
+Read the following files directly from this skill folder:
 - `assets/vulnerability-catalog.md` — every class with safe simulation, detection, fix pattern and regression test, plus the desktop/Electron (Cadence) checklist.
 - `assets/severity-and-findings.md` — severity factors and formula, bands, the full findings schema, status lifecycle, parse rules and the release gate.
 

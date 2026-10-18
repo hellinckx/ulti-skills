@@ -12,6 +12,16 @@ An English-language agent skill from the Cadence project, included in the Ulti S
 - SVG, Canvas and WebGL guidance
 - Game HUD states and observed performance checks
 
+## Visual example
+
+### A motion state sheet
+
+![A motion state sheet](../../.github/examples/motion-states.png)
+
+A static, authored specification showing entry, settling and final states, with timing, easing and a reduced-motion alternative. This is not a recorded animation.
+
+[Full-size image](../../.github/examples/motion-states.png) · [HTML source](../../examples/motion.html) · [Reproduce the captures](../../examples/README.md)
+
 ## Install
 
 For a project-local Codex installation, run this from your project root (Git required):
@@ -33,7 +43,7 @@ Review the motion in this interface. Recommend only useful state transitions and
 
 ## Requirements and integration
 
-Use an agent that can read `SKILL.md` and local reference files. The instructions originated in Cadence; references to its application internals are architectural context, not files included in this repository.
+Use an agent that can read `SKILL.md`, project files and any local reference files supplied with this skill.
 
 This skill contains instructions; it does not install a service, schedule a task or run code automatically.
 

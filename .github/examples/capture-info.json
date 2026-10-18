@@ -1,0 +1,49 @@
+{
+  "fixtureData": true,
+  "paletteSeed": 155,
+  "contrastPairs": 42,
+  "contrastPairsPassing": 42,
+  "viewports": [
+    {
+      "class": "mobile",
+      "width": 390,
+      "height": 844,
+      "horizontalOverflow": false,
+      "dialogWithinViewport": true,
+      "file": "responsive-mobile.png"
+    },
+    {
+      "class": "tablet",
+      "width": 820,
+      "height": 1180,
+      "horizontalOverflow": false,
+      "dialogWithinViewport": true,
+      "file": "responsive-tablet.png"
+    },
+    {
+      "class": "normal",
+      "width": 1360,
+      "height": 900,
+      "horizontalOverflow": false,
+      "dialogWithinViewport": true,
+      "file": "responsive-normal.png"
+    },
+    {
+      "class": "large",
+      "width": 1920,
+      "height": 1080,
+      "horizontalOverflow": false,
+      "dialogWithinViewport": true,
+      "file": "responsive-large.png"
+    }
+  ],
+  "checks": [
+    "Keyboard opens dialog and focuses its first field",
+    "Empty submission shows associated error and preserves focus",
+    "Valid submission adds one task with its selected priority and confirms it",
+    "Review filter shows two matching rows",
+    "Escape closes dialog and restores trigger focus",
+    "No browser JavaScript errors",
+    "All four demo pages fit a 390px viewport"
+  ]
+}

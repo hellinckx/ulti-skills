@@ -17,8 +17,8 @@ Aim for an interface that feels considered, calm, precise, and immediately usabl
 
 ## 1. Choose a direction before styling
 - Read the request and existing files. Follow the project brand, colors, fonts, design system, and AGENTS.md requirements when present.
-- For every frontend task create or update a canonical, transferable design specification, normally `docs/DESIGN.md`. If an established equivalent exists, maintain it rather than creating a competing file. Read `assets/design-template.md` through `takt_skill_reference` as the completeness guide. Record actual tokens, typography, layouts, component states, interactions, adaptation, accessibility, assets and implementation paths; another team must be able to reproduce the style from this document. Update it with the final implementation and link QA evidence. Small edits update only affected decisions.
-- If no direction exists, derive one from audience, product purpose, content and platform. Choose deliberately among editorial, expressive, dense, restrained or other appropriate directions. Cadence's house style is an optional starting point for work tools, never a universal requirement.
+- For every frontend task create or update a canonical, transferable design specification, normally `docs/DESIGN.md`. If an established equivalent exists, maintain it rather than creating a competing file. Read `assets/design-template.md` directly as the completeness guide. Record actual tokens, typography, layouts, component states, interactions, adaptation, accessibility, assets and implementation paths; another team must be able to reproduce the style from this document. Update it with the final implementation and link QA evidence. Small edits update only affected decisions.
+- If no direction exists, derive one from audience, product purpose, content and platform. Choose deliberately among editorial, expressive, dense, restrained or other appropriate directions.
 - Give each page one primary action and a clear reading order. Remove elements that do not help people complete the task.
 
 ## 2. Let typography establish hierarchy

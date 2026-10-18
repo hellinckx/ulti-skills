@@ -33,7 +33,7 @@ Review this project structure. Propose a small, reversible cleanup limited to th
 
 ## Requirements and integration
 
-Use an agent that can read `SKILL.md` and local reference files. The instructions originated in Cadence; references to its application internals are architectural context, not files included in this repository.
+Use an agent that can read `SKILL.md`, project files and any local reference files supplied with this skill.
 
 This skill contains instructions; it does not install a service, schedule a task or run code automatically.
 

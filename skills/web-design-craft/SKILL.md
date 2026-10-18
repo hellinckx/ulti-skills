@@ -82,10 +82,9 @@ Centred hero: headline + paragraph + two buttons + gradient blob · three identi
 - **usability-review** — checks task behaviour and copy clarity on the built surface.
 - **responsive-evidence** — produces the four-size screenshots that become your record's `evidence`.
 - **ab-testing** — when two directions or heroes compete; keep accessibility a guardrail, never a weighted trade-off.
-- **takt-design** — one optional work-tool direction (dense, calm); use as a reference when the brief chooses it.
 
 ## Reference files (read on demand)
-In Cadence, call `takt_skill_reference` with `skill: "web-design-craft"` and one of:
+Read the following files directly from this skill folder:
 - `assets/web-craft-method.md` — the full Direction-first method with worked spacing scales, modular type scale and `clamp()` examples, section-architecture catalog, grid/layout patterns, responsive rules.
 - `assets/motion-system.md` — easing curves, duration bands, scroll-reveal and hover patterns, the component/state matrix, radius/elevation systems, reduced-motion path.
 - `assets/design-direction-record.md` — the machine-readable direction record (JSON schema, filled example, read-back rules).

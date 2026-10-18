@@ -12,6 +12,16 @@ An English-language agent skill from the Cadence project, included in the Ulti S
 - Real screenshots from the running interface
 - A workspace report with defects, fixes and remaining gaps
 
+## Visual example
+
+### One interface across four viewport classes
+
+![One interface across four viewport classes](../../.github/examples/responsive.png)
+
+Actual Chromium screenshots at 390×844, 820×1180, 1360×900 and 1920×1080. The overview resizes the captures for comparison; full-size screenshots and capture metadata are included.
+
+[Full-size image](../../.github/examples/responsive.png) · [HTML source](../../examples/interface.html) · [Capture metadata](../../.github/examples/capture-info.json) · [Reproduce the captures](../../examples/README.md)
+
 ## Install
 
 For a project-local Codex installation, run this from your project root (Git required):
@@ -33,7 +43,7 @@ Verify the settings screen at mobile, tablet, normal and large widths. Inspect r
 
 ## Requirements and integration
 
-Use an agent that can read `SKILL.md` and local reference files. The instructions originated in Cadence; references to its application internals are architectural context, not files included in this repository.
+Use an agent that can read `SKILL.md`, project files and any local reference files supplied with this skill.
 
 This skill contains instructions; it does not install a service, schedule a task or run code automatically.
 

@@ -87,6 +87,6 @@ Plus a local git repository with one commit. `check --json` returns `{ ok, root,
 - `ab-testing` when the concept contains a learning or experiment loop.
 
 ## Reference files and scripts
-In Cadence, call `takt_skill_reference` with `skill: "venture-blueprint"` and `assets/handoff-kit.md` (all kit templates, the fill markers and anchors the checker uses).
+Read `assets/handoff-kit.md` directly for all kit templates, fill markers and anchors used by the checker.
 - `scripts/scaffold.mjs new <folder> --name "<Name>" [--date YYYY-MM-DD]` writes missing kit files only.
 - `scripts/scaffold.mjs check <folder> [--json]` checks files, gaps, next step, milestones with acceptance, unique register ids pointing to real milestones, decisions, the R-001 request, start prompts, skill paths and config JSON. Exit 0 ready, 1 gaps, 2 usage error.

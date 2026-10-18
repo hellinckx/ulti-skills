@@ -93,7 +93,7 @@ Load-testing an empty or ten-row database · uniform random seed data that hides
 - **project-structure / complete-app** — seed scripts, the harness and result records live in the project's test/ops structure; a passing verdict joins the release acceptance.
 
 ## Reference files (read on demand)
-In Cadence, call `takt_skill_reference` with `skill: "load-stress-testing"` and one of:
+Read the following files directly from this skill folder:
 - `assets/method.md` — staging checklist, data volumes and distributions, the idempotent-seed pattern, the Playwright harness, profiles with numbers, concurrency modelling, metric math (percentiles, RPS, USE), the root-cause checklist.
 - `assets/result-schema.md` — the result JSON schema, a worked failing-architecture example, threshold defaults and the machine-applicable verdict rules.
 

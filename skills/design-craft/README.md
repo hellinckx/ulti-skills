@@ -12,6 +12,16 @@ An English-language agent skill from the Cadence project, included in the Ulti S
 - Typography, layout, accessible states and responsive behavior
 - Observed review with explicit verification gaps
 
+## Visual example
+
+### A considered project workspace
+
+![A considered project workspace](../../.github/examples/interface.png)
+
+An authored example of shared typography, restrained color, spacing, hierarchy and component states. The project and data are fictional.
+
+[Full-size image](../../.github/examples/interface.png) · [HTML source](../../examples/interface.html) · [Reproduce the captures](../../examples/README.md)
+
 ## Install
 
 For a project-local Codex installation, run this from your project root (Git required):
@@ -33,9 +43,7 @@ Define a visual direction for an existing scheduling tool and update its canonic
 
 ## Requirements and integration
 
-Use an agent that can read `SKILL.md` and local reference files. The instructions originated in Cadence; references to its application internals are architectural context, not files included in this repository. Cadence can expose references through `takt_skill_reference`; in other agents, read the supplied files directly. Other Cadence-specific tools, if mentioned, require that runtime.
-
-Cadence tool names used by this skill: `takt_skill_reference`.
+Use an agent that can read `SKILL.md`, project files and the local references supplied in this folder. Read reference files directly; no Cadence-specific reference tool is required.
 
 This skill contains instructions and reference assets; it does not install a service, schedule a task or run code automatically.
 

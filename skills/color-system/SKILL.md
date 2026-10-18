@@ -18,8 +18,7 @@ metadata:
     per product instead of repeating the same default AI palette — and leave behind a palette record other agents
     can read.
   scope: Installation-wide; attached to interface and color tasks in every connected project. Owns the color method
-    and the palette record. web-design-craft owns layout/type/motion, design-craft owns the design specification,
-    takt-design is one optional house palette.
+    and the palette record. web-design-craft owns layout/type/motion, design-craft owns the design specification.
 ---
 
 # Color with intention
@@ -83,12 +82,11 @@ Indigo/violet accent (`#6366F1`–`#8B5CF6`) with a blue→purple gradient on ev
 ## Works with (library handoffs)
 - **web-design-craft** — owns layout, spacing, typography, motion; it *consumes* your tokens. Give it `--text-muted`, `--accent`, elevation steps; it never invents colors.
 - **design-craft** — owns the canonical design specification; you deliver the palette record and the measured ratios into it.
-- **takt-design** — one optional house palette (graphite + red); treat it as a seed example, not a requirement.
 - **ab-testing** — when two palettes compete, it decides; keep contrast a **guardrail** (veto), never a weighted trade-off.
 - **usability-review** / **responsive-evidence** — verify the rendered result at real sizes; attach their screenshots to the record's `evidence`.
 
 ## Reference files (read on demand)
-In Cadence, call `takt_skill_reference` with `skill: "color-system"` and one of:
+Read the following files directly from this skill folder:
 - `assets/palette-recipe.md` — full recipe with worked OKLCH values, dark + light example palettes, semantic and data-color tables, re-seeding for a brand, WCAG/APCA math.
 - `assets/tokens-template.css` — complete light + dark `--token` set to copy into the project and re-seed.
 - `assets/palette-record.md` — the machine-readable palette record (JSON schema, example, how an agent reads it back).

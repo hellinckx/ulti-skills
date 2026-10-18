@@ -12,6 +12,16 @@ An English-language agent skill from the Cadence project, included in the Ulti S
 - Central settings, help and accessible interactions
 - Documented startup and end-to-end acceptance
 
+## Visual example
+
+### A working interface slice
+
+![A working interface slice](../../.github/examples/interface.png)
+
+A small in-memory example with task creation, filtering, validation and keyboard recovery. It illustrates part of the delivery checklist; it is not a complete project-management product.
+
+[Full-size image](../../.github/examples/interface.png) · [HTML source](../../examples/interface.html) · [Reproduce the captures](../../examples/README.md)
+
 ## Install
 
 For a project-local Codex installation, run this from your project root (Git required):
@@ -33,7 +43,7 @@ Audit this local app for missing settings, help, persistence and recovery states
 
 ## Requirements and integration
 
-Use an agent that can read `SKILL.md` and local reference files. The instructions originated in Cadence; references to its application internals are architectural context, not files included in this repository.
+Use an agent that can read `SKILL.md`, project files and any local reference files supplied with this skill.
 
 This skill contains instructions; it does not install a service, schedule a task or run code automatically.
 

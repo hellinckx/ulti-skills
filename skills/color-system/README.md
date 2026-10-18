@@ -12,6 +12,16 @@ An English-language agent skill from the Cadence project, included in the Ulti S
 - Gamut mapping and contrast measurements
 - CSS tokens and a machine-readable palette record
 
+## Visual example
+
+### Generated light and dark themes
+
+![Generated light and dark themes](../../.github/examples/color-system.png)
+
+A real rendering of the bundled palette generator output at hue 155. All 42 declared contrast pairs meet their targets. This is a palette demonstration, not a full accessibility certification.
+
+[Full-size image](../../.github/examples/color-system.png) · [HTML source](../../examples/palette.html) · [Reproduce the captures](../../examples/README.md)
+
 ## Install
 
 For a project-local Codex installation, run this from your project root (Git required):
@@ -33,9 +43,7 @@ Create a warm, restrained dark and light palette for an inventory app. Record se
 
 ## Requirements and integration
 
-Use an agent that can read `SKILL.md` and local reference files. The instructions originated in Cadence; references to its application internals are architectural context, not files included in this repository. Cadence can expose references through `takt_skill_reference`; in other agents, read the supplied files directly. Other Cadence-specific tools, if mentioned, require that runtime.
-
-Cadence tool names used by this skill: `takt_skill_reference`.
+Use an agent that can read `SKILL.md`, project files and the local references supplied in this folder. Read reference files directly; no Cadence-specific reference tool is required.
 
 The bundled `.mjs` helpers require **Node.js 18 or newer** and have no npm dependencies. They run locally; no package installation is needed. Invoke them from this skill folder.
 
@@ -60,7 +68,6 @@ The instructions describe handoffs to these other skills in the same collection;
 - [A/B Testing](https://github.com/hellinckx/ulti-skills/tree/main/skills/ab-testing)
 - [Design Craft](https://github.com/hellinckx/ulti-skills/tree/main/skills/design-craft)
 - [Responsive Evidence](https://github.com/hellinckx/ulti-skills/tree/main/skills/responsive-evidence)
-- [Cadence Design](https://github.com/hellinckx/ulti-skills/tree/main/skills/takt-design)
 - [Usability Review](https://github.com/hellinckx/ulti-skills/tree/main/skills/usability-review)
 - [Web Design Craft](https://github.com/hellinckx/ulti-skills/tree/main/skills/web-design-craft)
 

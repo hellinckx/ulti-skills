@@ -104,7 +104,7 @@ Peeking and stopping at p < 0.05 · HARKing (choosing metric/segment after data)
 - **ai-app-engineering** — builds the eval harness for AI variants; you own the statistics and the decision.
 
 ## Reference files (read on demand)
-In Cadence, call `takt_skill_reference` with `skill: "ab-testing"` and one of:
+Read the following files directly from this skill folder:
 - `assets/experiment-method.md` — formulas with worked numbers (power, MDE, z/t tests, CUPED, Beta-Binomial, sequential methods, SRM, corrections, novelty/primacy), the AI-eval rubric, factorial/bandits, cross-skill variant sources.
 - `assets/result-schema.md` — the pre-registration/result JSON schema, a filled arithmetic-checked example, read-back rules.
 
