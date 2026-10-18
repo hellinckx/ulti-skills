@@ -2,7 +2,9 @@
 
 ## Review scope
 
-The publication review covers the 14 retained skill entrypoints and their supporting assets, including nine dependency-free Node.js helpers. It checked credential patterns, local personal paths, linked files, reference completeness, skill metadata, script syntax and targeted local safety behavior. No matching credentials were detected. This is a bounded review, not a guarantee of security.
+The publication review covers the original 14 skill entrypoints and their supporting assets, including nine dependency-free Node.js helpers. It checked credential patterns, local personal paths, linked files, reference completeness, skill metadata, script syntax and targeted local safety behavior. No matching credentials were detected. This is a bounded review, not a guarantee of security.
+
+`skills/3d-system-mirror` was added on 2026-10-18 after that review. It contains Markdown only (no scripts) and was checked for credential patterns, local personal paths and broken references. Its code patterns are illustrative and run only inside the reader's own project.
 
 ## Corrected helper behavior
 

@@ -1,14 +1,18 @@
 ---
 name: design-craft
-description: Design high quality web, desktop, and game interfaces with a clear visual direction, strong typography,
-  deliberate layout, accessible states, and responsive behavior. Avoid generic AI-generated UI patterns.
+description: Give web, desktop and game interfaces a clear visual direction and record it in one transferable design
+  specification (docs/DESIGN.md) — typography, layout, color roles, every component state, accessibility and
+  adaptation — so another team can reproduce the style. Use for any frontend task that creates or changes how an
+  interface looks, and whenever a result risks looking like a generic AI template. Do not use for exact palettes
+  (color-system), web layout and section polish (web-design-craft), motion (motion-and-graphics) or task-flow
+  testing (usability-review).
 metadata:
   creator: Cadence project
   created: '2026-09-30'
   creation-method: Editorial Markdown guide written in the Cadence repository; no external template or executable
     scripts.
-  purpose: Maintain strong design quality in interfaces, game UI, and responsive views.
-  scope: Installation-wide; included with relevant tasks in every connected project.
+  purpose: Maintain strong design quality in interfaces, game UI and responsive views, documented once.
+  scope: Frontend tasks on any platform; owns the canonical design specification.
 ---
 
 # Design with intention

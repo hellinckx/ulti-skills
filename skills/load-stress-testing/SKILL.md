@@ -16,10 +16,9 @@ metadata:
     USE method, the architecture-vs-infrastructure diagnosis) into an adaptable method, a Playwright measurement
     pattern, a machine-readable result schema and a dependency-free Node script that computes percentiles and applies
     the verdict rules. Revised 16.10.2026 to the library's operating structure.
-  purpose: Give every app Cadence builds a deliberate way to find out, before launch, whether it holds under production-like
+  purpose: Give every app a deliberate way to find out, before launch, whether it holds under production-like
     data and concurrent load — and to decide whether to refactor or to buy servers, with evidence.
-  scope: Installation-wide; attached to load, stress, performance, scalability and capacity tasks in every connected
-    project. Owns the load/performance method and the verdict; security-testing owns hostile-input robustness, ab-testing
+  scope: Any load, stress, performance, scalability or capacity task. Owns the load/performance method and the verdict; security-testing owns hostile-input robustness, ab-testing
     decides whether two measured results differ.
 ---
 
@@ -42,7 +41,7 @@ An app that works for one developer on an empty database says nothing about laun
 - **Idempotent seed scripts** that wrote realistic data into the real staging DB at ≥ 3 regimes (~10k / ~100k / ~500k rows per hot table).
 - A **Playwright timing harness** emitting one structured row per action per regime per profile.
 - One **result record per run** (`assets/result-schema.md`, JSON): scenario, target, profile, concurrency model, data volume, per-action p50/p95/p99/TTFB/error rate, throughput, saturation, thresholds, `verdict`, `root_cause_class`, breakpoint, evidence.
-- `scripts/verdict.mjs percentiles` turns raw latencies into p50/p95/p99; `scripts/verdict.mjs verdict run.json` applies the decision rules and compares with the recorded verdict (exit 1 on fail). In Cadence sessions (scripts not exposed) apply the rules from the asset by hand.
+- `scripts/verdict.mjs percentiles` turns raw latencies into p50/p95/p99; `scripts/verdict.mjs verdict run.json` applies the decision rules and compares with the recorded verdict (exit 1 on fail). If your agent cannot run Node scripts, apply the rules from the asset by hand and show the numbers.
 
 ## Method
 1. **Staging that matches production by design** — same DB engine and version, schema, migrations, **indexes**, instance class (or the prototype machine), pool/config, runtime concurrency. A smaller box only describes that box; label it. **Never load-test production without written consent, a window and a kill switch.** Isolate, synthetic data only, observability on.

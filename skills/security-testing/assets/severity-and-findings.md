@@ -66,7 +66,7 @@ One record per finding. YAML shown; JSON is equivalent (same keys). Required fie
 | `evidence` | – | string[] | Pointers to logs/snapshots/screenshots — never raw secrets. |
 | `discovered` | – | date | ISO date. |
 | `owner` | – | string | Who owns the fix. |
-| `task` / `project` | – | string | Links to the Cadence task and project id. |
+| `task` / `project` | – | string | Optional links to the task and project id in your tracker. |
 | `references` | – | string[] | CWE/OWASP/CVE ids. |
 | `notes` | – | string | Environment assumptions, scope caveats, accepted-risk rationale. |
 

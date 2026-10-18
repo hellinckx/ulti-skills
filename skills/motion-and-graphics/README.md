@@ -9,7 +9,7 @@ An English-language agent skill from the Cadence project, included in the Ulti S
 ## What it produces
 
 - Motion decisions, curves, duration and reduced-motion paths
-- SVG, Canvas and WebGL guidance
+- SVG, Canvas, WebGL and three.js / React Three Fiber guidance with performance budgets
 - Game HUD states and observed performance checks
 
 ## Visual example

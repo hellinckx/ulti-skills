@@ -1,14 +1,16 @@
 ---
 name: usability-review
-description: Evaluate and improve task completion, discoverability, keyboard accessibility and recovery in interfaces.
-  Applies to frontend planning, implementation and acceptance; visual styling belongs to design-craft and viewport
-  evidence to responsive-evidence.
+description: Walk real tasks through a running interface and fix what blocks people — task completion,
+  discoverability, clear feedback, keyboard-only use, focus handling, live-update stability and recovery from
+  errors — with findings saved under docs/qa/usability/. Use when planning, building or accepting any frontend flow,
+  or when someone says an interface is confusing. Do not use for visual styling (design-craft), viewport proof
+  (responsive-evidence) or as a substitute for research with real participants.
 metadata:
   creator: Cadence project
   created: '2026-10-13'
   creation-method: Editorial guide based on the product's frontend quality requirements.
   purpose: Make interfaces intuitive through observed task flows and actionable findings.
-  scope: Installation-wide; relevant frontend tasks only.
+  scope: Frontend planning, implementation and acceptance.
 ---
 
 # Usability through observed tasks

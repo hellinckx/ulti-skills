@@ -1,7 +1,7 @@
 ---
 name: security-testing
-description: Authorized, defensive security testing of your OWN systems — web apps, APIs, the Cadence desktop/Electron
-  app, services — to find, reproduce and FIX vulnerabilities and abuse cases before users or attackers hit them.
+description: Authorized, defensive security testing of your OWN systems — web apps, APIs, desktop/Electron
+  apps, services — to find, reproduce and FIX vulnerabilities and abuse cases before users or attackers hit them.
   A repeatable workflow (scope → threat model → simulate safely → confirm → fix → regression test → document), a
   broad vulnerability catalog with the smallest non-destructive proof and the fix pattern per class, a CVSS-like
   severity and a machine-readable findings file with a release gate. Use for security reviews, vulnerability hunting,
@@ -17,11 +17,10 @@ metadata:
     CVSS-like severity, machine-readable findings schema and release gate — plus a dependency-free Node script that
     scores severity and validates findings files. No attack tooling shipped. Revised 16.10.2026 to the library's
     operating structure.
-  purpose: Let Cadence find, reproduce and fix security defects and abuse cases in the owner's own systems before
+  purpose: Find, reproduce and fix security defects and abuse cases in the owner's own systems before
     real users or attackers encounter them, with every finding closed by a fix and a regression test and recorded
     so a release gate can read it.
-  scope: Installation-wide; attached to security, vulnerability, pentest, audit and hardening tasks in every connected
-    project. Strictly defensive, limited to systems the owner controls. Cross-references load-stress-testing (resilience
+  scope: Security, vulnerability, pentest-simulation, audit and hardening tasks on the owner's own systems. Strictly defensive, limited to systems the owner controls. Cross-references load-stress-testing (resilience
     under load) and ab-testing (experiment-integrity abuse cases).
 ---
 
@@ -44,12 +43,12 @@ Authorized, **defensive** testing of systems you own or operate, to find, reprod
 - A **threat model** (assets, entry points, trust boundaries, abuse cases) written down.
 - A **findings file** (`assets/severity-and-findings.md`, JSON or YAML list): stable ids, class, severity (score + band + factors), location, repro, fix, status, test, evidence — one record per finding, kept across runs and diffed by id.
 - For every confirmed finding: the **fix** at the right layer and a **regression test** that fails on the old code and passes on the fixed code.
-- The **release-gate result** from `scripts/severity.mjs validate findings.json` (fails if any `high`/`critical` finding is not `verified`, `accepted-risk` or `false-positive`). In Cadence sessions (scripts not exposed) apply the formula and gate rules from the asset by hand.
+- The **release-gate result** from `scripts/severity.mjs validate findings.json` (fails if any `high`/`critical` finding is not `verified`, `accepted-risk` or `false-positive`). If your agent cannot run Node scripts, apply the formula and gate rules from the asset by hand.
 
 ## Method (repeat per target)
 `Scope → Threat Model → Simulate → Confirm → Fix → Add test → Document`
 1. **Scope** — name system, environment and data; confirm ownership; never destructive payloads against production or real user data.
-2. **Threat model** — assets (data, credentials, money, model access, the user's files/shell on the Cadence host, availability) · entry points (HTTP params/body/headers, cookies, uploads, WebSocket/IPC, CLI args, env, filenames, deserialized blobs, webhooks, LLM/tool output) · trust boundaries (browser→server, renderer→main, app→OS shell, service→DB, code→dependency) · abuse cases ("as an attacker I … to get …") → your Simulate backlog.
+2. **Threat model** — assets (data, credentials, money, model access, the user's files and shell on the host machine, availability) · entry points (HTTP params/body/headers, cookies, uploads, WebSocket/IPC, CLI args, env, filenames, deserialized blobs, webhooks, LLM/tool output) · trust boundaries (browser→server, renderer→main, app→OS shell, service→DB, code→dependency) · abuse cases ("as an attacker I … to get …") → your Simulate backlog.
 3. **Simulate** — smallest **non-destructive** proof per class (catalog): a benign marker row, `{{7*7}}`, a non-alerting DOM probe, your *own* collector for SSRF/redirect. Snapshot first; log what you ran.
 4. **Confirm** — input → observed wrong behaviour → why it is a defect. A scanner line is not a finding until reproduced.
 5. **Fix** — at the right layer: validation at the boundary, encoding at the sink, authorization in the handler; framework-safe APIs over hand-rolled sanitizers; re-run the class across the codebase (the same mistake repeats).
@@ -111,7 +110,7 @@ Promoting scanner output to findings without reproduction · "fixed" with no reg
 
 ## Reference files (read on demand)
 Read the following files directly from this skill folder:
-- `assets/vulnerability-catalog.md` — every class with safe simulation, detection, fix pattern and regression test, plus the desktop/Electron (Cadence) checklist.
+- `assets/vulnerability-catalog.md` — every class with safe simulation, detection, fix pattern and regression test, plus the desktop/Electron checklist.
 - `assets/severity-and-findings.md` — severity factors and formula, bands, the full findings schema, status lifecycle, parse rules and the release gate.
 
 Scripts (run in Claude/Codex or copy into the project; dependency-free Node ≥ 18):

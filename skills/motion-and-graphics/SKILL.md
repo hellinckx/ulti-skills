@@ -1,42 +1,84 @@
 ---
 name: motion-and-graphics
-description: Create purposeful motion and 2D or 3D graphics for interfaces and games. Choose useful animation, tune
-  curves and durations, and build performant Canvas, SVG, or WebGL visuals without network dependencies.
+description: Decide which interface motion is worth having and build fast, accessible 2D and 3D graphics — timing and
+  easing, reduced-motion paths, SVG and Canvas 2D, WebGL and three.js / React Three Fiber scenes, readable canvas
+  text in 3D, game HUDs, frame-rate-independent loops and measured performance budgets. Use for animation,
+  transitions, charts drawn by hand, canvas games, 3D scenes, visualisations and any "make it feel alive" request.
+  Do not use for static layout and typography (web-design-craft, design-craft), palettes (color-system), or a full
+  3D mirror of a live system (3d-system-mirror builds on this skill).
 metadata:
   creator: Cadence project
   created: '2026-09-30'
   creation-method: Editorial Markdown guide written in the Cadence repository; no external template or executable
-    scripts.
-  purpose: Build accessible, performant motion and graphics without network dependencies.
-  scope: Installation-wide; included with relevant tasks in every connected project.
+    scripts. Expanded 18.10.2026 with 3D scene practice, performance budgets and verification lessons from building
+    a procedural three.js office.
+  purpose: Build accessible, performant motion and graphics that explain something and run smoothly on ordinary
+    hardware.
+  scope: Interface motion, 2D and 3D graphics and game UI on the web and in desktop shells (Electron, Tauri).
 ---
 
 # Motion and graphics
 
-## Decide whether motion is useful
-- Use motion to explain origin and destination, show a state change, or provide feedback. Remove decoration that communicates nothing.
-- Keep frequent actions such as typing and tab changes still or very brief. Important, uncommon moments such as first launch or completion may take longer.
+## 1. Decide whether motion is useful
+- Motion explains origin and destination, shows a state change or confirms an action. Remove motion that communicates nothing.
+- Keep frequent actions (typing, tab changes, list filtering) still or very brief. Rare, important moments (first launch, completion) may take longer.
+- Motion must never block input: a new state starts from the current position, and the person can act before an animation ends.
+- Every animated thing has a reduced-motion path: under `@media (prefers-reduced-motion: reduce)` (or the app's own setting) replace movement with an immediate change or a short fade, stop ambient loops and parallax, and cut cameras instead of flying them.
 
-## Curves and duration
-- Typical durations: 80–150 ms for small feedback, 150–250 ms for fades, 220–320 ms for dialogs and spatial transitions, and up to 500 ms for large scenes. Shorten elements that move farther.
-- Use `cubic-bezier(.2,.7,.2,1)` for entering and `cubic-bezier(.4,0,1,1)` for leaving. Springs can suit interruptible drag and swipe interactions.
-- Animate `transform` and `opacity`, not layout properties such as `width`, `top`, or `box-shadow` in a loop. Allow a new state to start from the current position.
-- Under `@media (prefers-reduced-motion: reduce)`, replace motion with an immediate change or a short fade.
+## 2. Curves and duration
+- Typical durations: 80–150 ms small feedback, 150–250 ms fades, 220–320 ms dialogs and spatial transitions, up to 500 ms for large scene changes. Shorter for elements that move less far; longer for big surfaces.
+- Easing: `cubic-bezier(.2,.7,.2,1)` for entering, `cubic-bezier(.4,0,1,1)` for leaving. Springs suit interruptible drag, swipe and camera motion.
+- In frame loops ease with frame-rate-independent damping, `value += (target - value) * (1 - Math.exp(-rate * dt))` (three.js: `MathUtils.damp`), never with a fixed factor per frame.
+- Animate `transform` and `opacity`. Do not animate `width`, `top` or `box-shadow` in loops; use `will-change` only while an animation runs.
+- Stagger lists by 20–40 ms per item and cap the total at about 300 ms.
 
-## 2D graphics
-- Use SVG for icons, charts, and scalable shapes. Use Canvas 2D for many moving objects. Account for `devicePixelRatio` when sizing the canvas.
-- Drive animation with `requestAnimationFrame` and a fixed logic step so speed does not depend on frame rate. Pause when the page is hidden.
-- Keep collision, physics, and state separate from rendering so they can be tested with `node:test`.
+## 3. 2D graphics
+- SVG for icons, charts and scalable shapes with few elements; Canvas 2D for hundreds of moving objects; WebGL beyond that.
+- Size canvases for `devicePixelRatio` (`canvas.width = cssWidth * dpr`, then `ctx.scale(dpr, dpr)`), and redraw on resize with a `ResizeObserver`.
+- Drive animation with `requestAnimationFrame`, a fixed logic step and an accumulator, so speed never depends on the frame rate. Pause when the document is hidden.
+- Keep simulation, collision and state separate from drawing so they can be unit-tested without a browser; seed randomness so runs are reproducible.
+- Charts: label axes and units, tabular numerals, no 3D effects on 2D data, and a text or table alternative for screen readers.
 
-## 3D graphics
-- The network is disabled, so do not load CDN libraries. Use WebGL directly for small effects, or use a library file already present in the project.
-- Use few light sources, a restrained palette, and gentle camera motion. Apply fog or depth of field sparingly.
-- Reuse geometry and instances. Keep textures small and reduce resolution dynamically on slower devices.
+## 4. 3D graphics
+### Stack and assets
+- Use a library already in the project; otherwise three.js, and React Three Fiber (`@react-three/fiber`) plus `@react-three/drei` in React apps. Pin exact versions and bundle them; do not load runtime code from a CDN in desktop apps or offline products.
+- Prefer procedural geometry from primitives (boxes, cylinders, lathes, extrusions) over model files when the style allows it: no asset pipeline, tiny bundles, every piece parameterised.
+- Decide the scale of the main subject first (characters, vehicles, pieces) and build everything else to it. Check the view from the subject's own eyes.
 
-## Game interfaces
-- Keep the HUD near the edges and leave the central play area clear. Use tabular numerals and briefly emphasize changed values.
-- Treat start, pause, restart, and end as distinct states with keyboard and touch support.
-- Give each hit or action brief feedback. Avoid continuous blinking.
+### Light, material, camera
+- One shadow-casting directional light plus hemisphere or ambient fill; only large pieces cast shadows. A restrained palette, physical materials (`MeshStandardMaterial`, `MeshPhysicalMaterial` with clear coat or sheen for toy-like surfaces), fog or depth of field sparingly.
+- Gentle camera moves with damping (drei `CameraControls`); never spin the camera on its own. Clamp distance and polar angle so the camera cannot go under the ground or through walls; cameras that follow a subject look over walls or along corridors.
+- When a side panel covers part of the canvas, keep the subject in the free area: an orbit focal offset (half the covered width in metres at the orbit distance) or `camera.setViewOffset` in first person.
 
-## Check motion quality
-Observe animation in the workplace browser over multiple frames. Check for startup stutter, forgotten timers or listeners, and memory leaks. Test touch targets, portrait layout, and overflow at mobile and tablet widths.
+### Text and labels in 3D
+- Readable text inside a scene is a `CanvasTexture` painted at 512–1024 px wide, with `colorSpace = SRGBColorSpace`, anisotropy 4–8 and `toneMapped: false`. Repaint only when the content's signature changes, at most a few times per second.
+- Labels that must be hidden by objects in front belong in the scene as camera-facing planes with `depthTest: true` and `depthWrite: false`, so only the covered part disappears. HTML overlays always draw on top and show through walls; use them only for UI that should.
+- Scale labels mildly with distance and declutter overlaps in screen space (project, sort by distance, push later ones up).
+
+### Interaction
+- Raycast only against meaningful targets; mark pickable groups and give them a hover state (emissive tint, pointer cursor, short label of what a click does).
+- Make every 3D action reachable by keyboard or from an accessible list next to the canvas (search, buttons, a visually hidden list of what is shown).
+- For screens inside the scene that people can use, map pointer UV to canvas pixels and draw the cursor, selection and scrollbars into the texture; hide the real cursor over the screen and pause camera controls while it is in use.
+
+## 5. Performance budget
+- Targets: 60 fps at the common laptop size, draw calls well below 1,000, no long tasks above 50 ms during interaction, no growth in memory over a 10-minute run.
+- Reuse geometry and materials; scale shared unit geometries per mesh. Use `InstancedMesh` for repeated objects (trees, books, lights, particles).
+- Merge static meshes per material after mount (`BufferGeometryUtils.mergeGeometries`) and keep animated or clickable pieces separate.
+- Cap `dpr` (about 1.5–1.75), keep textures small, use `frameloop="demand"` with an explicit invalidate when nothing moves, and lower quality dynamically on slow devices.
+- Dispose geometries, materials and textures on unmount; remove listeners and timers. Lazy-load heavy 3D views so the rest of the app starts as fast as before.
+- Expose fps, draw calls (`renderer.info.render.calls`) and triangles to tests, for example as data attributes updated once a second.
+
+## 6. Game interfaces
+- HUD near the edges, the centre of play clear; tabular numerals; briefly emphasise changed values.
+- Start, pause, restart and end are distinct states with keyboard, touch and controller input where supported.
+- Each hit or action gets short feedback (scale pop, flash, sound with a mute setting). No continuous blinking; nothing flashes more than three times per second.
+
+## 7. Verify by looking
+- Run the real build and observe animations over several frames or a short screen recording. Check startup stutter, timers and listeners left running, memory over time and behaviour when the window is hidden and shown again.
+- For 3D, capture every camera mode and important view at small and large window sizes, plus reduced motion and each theme; open and inspect every image. Typical defects: objects at the wrong scale, cameras inside walls, labels through floors, panels covering the subject, black frames from cameras behind geometry.
+- Record fps and draw calls next to the screenshots. Report what was measured, on which machine, and what was not checked.
+
+## Works with
+- `3d-system-mirror` — a complete recipe for mirroring a live system as a 3D world on top of these practices.
+- `design-craft` and `web-design-craft` — direction and layout the motion supports; `color-system` — palettes and contrast for scenes and HUDs.
+- `responsive-evidence` and `usability-review` — viewport proof and task walkthroughs for interfaces with motion.

@@ -2,9 +2,9 @@
 
 # Ulti Skills
 
-**14 general-purpose agent skills for planning, design, engineering and quality.**
+**15 general-purpose agent skills for planning, design, engineering, 3D visualisation and quality.**
 
-An English-language collection from the Cadence project, released under the [MIT license](LICENSE). Each skill has its own `SKILL.md`, usage guide and any supporting references or dependency-free helpers. This repository contains the skill library, not the Cadence application.
+An English-language collection, most of it from the Cadence project, released under the [MIT license](LICENSE). Each skill has its own `SKILL.md`, usage guide and any supporting references or dependency-free helpers. This repository contains the skill library, not the Cadence application.
 
 ## Visual examples
 
@@ -48,6 +48,7 @@ Other agents can read a selected `SKILL.md` directly or use their own multi-skil
 
 | Skill | Purpose |
 |---|---|
+| [3d-system-mirror](skills/3d-system-mirror/README.md) | Mirror a running system — agents, services, jobs — as an explorable 3D world where every visible word comes from real data. |
 | [ab-testing](skills/ab-testing/README.md) | Design experiments before collecting data and turn variant comparisons into auditable decisions. |
 | [ai-app-engineering](skills/ai-app-engineering/README.md) | Build applications with explicit provider connections, model selection, agent tools and operational boundaries. |
 | [color-system](skills/color-system/README.md) | Create deliberate OKLCH palettes, semantic tokens and measured contrast across themes. |
@@ -80,7 +81,7 @@ node scripts/type-scale.mjs --base 16 --ratio 1.25 --ratio-sm 1.2 --css
 
 Installing a skill does not authorize external actions or expand workspace permissions. Messages, publications, spending, submissions and destructive actions require the authorization specified by the task and runtime. Never commit credentials, private evidence or customer data.
 
-The current collection review includes all 14 skill entrypoints, all nine Node helpers, file references and credential-pattern checks. Fourteen targeted security regressions pass. The exported helpers include narrowly scoped corrections for linked filesystem paths and malformed security findings; the original Takt project remains unchanged. See [security notes](SECURITY.md) for scope and limits.
+The publication review covered the original 14 skill entrypoints, all nine Node helpers, file references and credential-pattern checks, and fourteen targeted security regressions passed. `3d-system-mirror` (Markdown only, no helpers) was added afterwards and checked for credential patterns, local paths and broken references. The exported helpers include narrowly scoped corrections for linked filesystem paths and malformed security findings; the original Takt project remains unchanged. See [security notes](SECURITY.md) for scope and limits.
 
 Provider protocol examples require verification against the runtime you actually use. Provenance metadata and stable schema identifiers are retained; the collection does not prescribe a Cadence house style.
 
@@ -102,6 +103,6 @@ SECURITY.md
 
 ## Provenance and license
 
-Prepared from Cadence's built-in skill library with provenance metadata retained. This curated collection keeps the reusable project workflows; domain-specific business routines and the Cadence house design system are excluded. No private application history or local audit archives are included.
+Prepared from Cadence's built-in skill library with provenance metadata retained; `3d-system-mirror` was written separately from a reviewed 3D office build and generalised for publication. This curated collection keeps the reusable project workflows; domain-specific business routines and the Cadence house design system are excluded. No private application history or local audit archives are included.
 
 [MIT](LICENSE) — Copyright (c) 2026 hellinckx.

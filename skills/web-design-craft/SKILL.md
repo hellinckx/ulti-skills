@@ -14,10 +14,10 @@ metadata:
     analysis of a premium reference site plus accepted layout, typography and motion practice into an adaptable
     method with ranges, a direction record schema and a dependency-free fluid type-scale generator. Revised 16.10.2026
     to the library's operating structure.
-  purpose: Give every website and web app Cadence builds a deliberate, premium, non-generic surface — agency-grade
+  purpose: Give every website and web app a deliberate, premium, non-generic surface — agency-grade
     composition, type, motion and component states that adapt per product — and leave a direction record other agents
     can read and continue from.
-  scope: Installation-wide; attached to website, landing, web-app and interface tasks in every connected project.
+  scope: Website, landing-page, web-app and web interface tasks.
     Owns web layout, rhythm, typography, section architecture, component states and interaction polish. color-system
     owns color, design-craft owns the design specification, motion-and-graphics owns rich animation and graphics.
 ---

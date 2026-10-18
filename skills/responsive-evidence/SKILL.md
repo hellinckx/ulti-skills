@@ -1,13 +1,16 @@
 ---
 name: responsive-evidence
-description: Verify frontend adaptation in four viewport classes and save real screenshots and a report in the workspace.
-  Owns responsive layout evidence, not visual direction or usability review.
+description: Prove that an interface adapts — run the real build in four viewport classes (mobile, tablet/small,
+  normal, large), capture and actually inspect screenshots, fix what breaks and save images plus a report under
+  docs/qa/responsive/. Use whenever a frontend change is accepted or someone asks whether it works on phone, tablet
+  or large screens. Do not use for visual direction (design-craft), task-flow review (usability-review) or claims
+  from CSS inspection alone.
 metadata:
   creator: Cadence project
   created: '2026-10-13'
   creation-method: Editorial guide based on the product's four-class responsive acceptance requirement.
   purpose: Deliver usable mobile, small, normal and large interfaces with inspectable evidence.
-  scope: Installation-wide; frontend work and visual acceptance only.
+  scope: Frontend work and visual acceptance only.
 ---
 
 # Four classes, real evidence

@@ -1,17 +1,18 @@
 ---
 name: project-structure
-description: Keep every project folder clean, ordered and English — feature- and responsibility-based subfolders
-  instead of flat folders with dozens of files, consistent naming, a defined docs/ layout and safe moves of existing
-  files.
+description: Keep a project's folders clean, ordered and English — feature- and responsibility-based subfolders
+  instead of flat dumps, consistent naming per ecosystem, a defined docs/ layout and safe moves of existing files
+  with every reference updated. Use when creating a project, adding modules, when a folder grows past a dozen files,
+  or when asked to tidy or restructure. Do not use to move generated, vendored or third-party code, or to mix a
+  large restructuring into unrelated feature work.
 metadata:
   creator: Cadence project
   created: '2026-10-10'
   creation-method: Editorial Markdown guide written in the Cadence repository from the project conventions of Cadence
     and common layouts of the major ecosystems; no external template or executable scripts.
-  purpose: Make projects that Cadence creates or changes easy to navigate for people and agents, and stop folders
+  purpose: Make projects easy to navigate for people and agents, and stop folders
     from turning into flat dumps of files.
-  scope: Installation-wide; included with planning, implementation, integration, backend and documentation tasks
-    in every connected project.
+  scope: Planning, implementation, integration, backend and documentation tasks in any project.
 ---
 
 # Clean, English project structure
@@ -50,18 +51,18 @@ Typical `src/` layouts:
 - **Python:** `src/<package>/` with subpackages, `tests/`, `pyproject.toml`.
 
 ## docs/ layout
-Cadence and its agents use this layout in every project; create only what is needed:
+A proven layout for projects that people and agents work on together; create only what is needed:
 ```text
 docs/
   PROGRESS.md            short log of what changed and the current state
   ARCHITECTURE.md        modules, data flow, important decisions
   DESIGN.md              design direction and tokens (UI projects)
   decisions/             ADR-0001-short-title.md … (architecture decisions)
-  plans/                 plans, for example superplan-<run-id>.md
-  scrum/                 Scrum process: README, product backlog, sprints/ (maintained by Cadence)
-  project-handbook/      project handbook PDFs (created by Cadence)
+  plans/                 plans, for example plan-<run-id>.md
+  backlog/               product backlog and sprints/ when the project uses Scrum
   guides/                user and operator guides when the README is not enough
-  takt/                  Cadence working files such as sub-agent reports
+  qa/                    verification evidence (screenshots, reports) per run
+  agents/                agent working files such as sub-agent reports, when agents work on the project
 ```
 Do not place loose topic files directly in `docs/` when a subfolder above fits. If an older project still has German names (`docs/FORTSCHRITT.md`, `docs/ARCHITEKTUR.md`, `docs/projekthandbuch/`), move their content to the English names when you touch them and update references.
 

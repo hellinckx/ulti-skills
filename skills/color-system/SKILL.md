@@ -14,10 +14,10 @@ metadata:
     WCAG 2.2 and APCA contrast rules, a CSS-variable token contract and a machine-readable palette record, condensed
     from accepted color and accessibility practice. Reference files carry worked values; dependency-free Node scripts
     generate and verify palettes. Revised 16.10.2026 to the library's operating structure.
-  purpose: Give every interface Cadence builds a deliberate, accessible, non-generic color foundation that adapts
+  purpose: Give every interface a deliberate, accessible, non-generic color foundation that adapts
     per product instead of repeating the same default AI palette — and leave behind a palette record other agents
     can read.
-  scope: Installation-wide; attached to interface and color tasks in every connected project. Owns the color method
+  scope: Any interface or color task. Owns the color method
     and the palette record. web-design-craft owns layout/type/motion, design-craft owns the design specification.
 ---
 
@@ -40,7 +40,7 @@ Every run leaves behind:
 - A **palette record** (`assets/palette-record.md` schema, JSON): direction, seed hues, every token as OKLCH + hex per theme, the **measured contrast of the key pairs**, pass/fail, and the checks run. Another agent must be able to read it back and reproduce or audit the palette. Store it next to the design spec (e.g. `docs/design/palette.json`) and reference it from the spec that design-craft owns.
 - Short note in the design specification: method, seed hue(s), measured ratios.
 
-`scripts/palette.mjs` produces the tokens, the CSS and the record from a hue and verifies contrast; `scripts/contrast.mjs` checks any two colors. In Cadence sessions (scripts not exposed), compute with the formulas in `assets/palette-recipe.md`.
+`scripts/palette.mjs` produces the tokens, the CSS and the record from a hue and verifies contrast; `scripts/contrast.mjs` checks any two colors. If your agent cannot run Node scripts, compute with the formulas in `assets/palette-recipe.md` and record the measured ratios.
 
 ## Method (work in OKLCH)
 

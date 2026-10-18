@@ -10,14 +10,13 @@ description: Turn a raw idea ("I want a system that makes money with X", a voice
 metadata:
   creator: Cadence project
   created: '2026-10-18'
-  creation-method: Editorial Markdown guide written in the Cadence repository from two real preparations for the
-    person (Trading Research Factory and Swarmcast, 18.10.2026); handoff kit templates as a Markdown asset; one
+  creation-method: Editorial Markdown guide written in the Cadence repository from two real project preparations
+    (18.10.2026); handoff kit templates as a Markdown asset; one
     dependency-free Node script that scaffolds the kit and checks a prepared folder for completeness.
   purpose: The person brings ideas, not specifications, and hands projects between chats, agents and days. A prepared
     folder with one shared memory (register, progress, decisions, request log) lets every later agent continue blind,
     never duplicate work, and deliver something visible.
-  scope: Installation-wide; attached to planning and coordination work that prepares a new project or venture from
-    an idea. Owns the preparation and the handoff kit; goal-to-plan owns requirement expansion inside it, project-structure
+  scope: Planning and coordination work that prepares a new project or venture from an idea. Owns the preparation and the handoff kit; goal-to-plan owns requirement expansion inside it, project-structure
     the code layout, complete-app the later build.
 ---
 
@@ -60,7 +59,7 @@ Plus a local git repository with one commit. `check --json` returns `{ ok, root,
 3. **Find the unfair advantage.** Ask what an automated system can do that a human cannot (search hundreds of variants and keep the best, run around the clock, learn from every result) and make it the centre of the concept.
 4. **Research reality before designing.** Platform APIs, audits, terms of service, monetisation rules, licences, privacy, domain facts. Record each in RESEARCH with source, date and status (confirmed / secondary / open). Where a wish conflicts with rules (for example automating a website instead of its API, bypassing captchas), design the honest alternative and record the decision; never plan around a violation.
 5. **Name it.** Short, ownable, works in English; not generic ("AI Studio"), not a trademark.
-6. **Scaffold.** `node scripts/scaffold.mjs new <folder> --name "<Name>"` (never overwrites). In Cadence, copy the templates from `assets/handoff-kit.md`. Write the documents in the person's working language; keep the `<!-- kit:… -->` anchors.
+6. **Scaffold.** `node scripts/scaffold.mjs new <folder> --name "<Name>"` (never overwrites). Without Node, copy the templates from `assets/handoff-kit.md` by hand. Write the documents in the person's working language; keep the `<!-- kit:… -->` anchors.
 7. **Fill, in this order:** BRIEF → CONCEPT → domain bible + config with schema → MILESTONES → REGISTRY → DECISIONS → DESIGN → SKILLS → RESEARCH → PROGRESS → START prompts → README → AGENTS technical rules. Reuse what exists on the machine and name the paths. Size milestones so each ends in something the person can start and see.
 8. **Validate.** Validate every config example against its schema (and one invalid case is rejected); run `check` until READY; open every skill path you named.
 9. **Commit.** `git init -b main`, set the identity the person's other repositories use, commit. Create a remote only with the person's permission.

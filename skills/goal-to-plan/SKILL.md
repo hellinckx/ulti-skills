@@ -1,16 +1,19 @@
 ---
 name: goal-to-plan
-description: Turn short, vague user goals ("I want an app for X", a list of features, a look) into a complete, ordered
-  plan — derive users, features, implicit requirements, design, prerequisites, dependencies between features and
-  acceptance criteria, instead of waiting for a precise specification.
+description: Turn a short, vague goal ("I want an app for X", a list of features, a look) into a complete, ordered
+  plan — users, explicit and implicit requirements, design, prerequisites, a dependency graph and measurable
+  acceptance criteria — with visible assumptions instead of a round of questions. Use when someone describes what
+  they want rather than how, before building a new product or a large feature, or when a backlog must be derived
+  from a goal. Do not use for a small, fully specified change, or to prepare a whole new venture folder with
+  research and handoff files (venture-blueprint).
 metadata:
   creator: Cadence project
   created: '2026-10-10'
   creation-method: Editorial Markdown guide written in the Cadence repository from the user's stated way of working
     with Cadence; no external template or executable scripts.
-  purpose: People tell Cadence what they want to achieve, not how. Cadence does the product thinking, requirements
-    engineering and planning for every project and process itself.
-  scope: Installation-wide; included with planning, orchestration and coordination work in every connected project.
+  purpose: People say what they want to achieve, not how. The agent does the product thinking, requirements
+    engineering and planning itself.
+  scope: Planning, orchestration and coordination work in any project.
 ---
 
 # From a goal to a complete plan

@@ -15,11 +15,11 @@ metadata:
     from accepted causal-inference, frequentist and Bayesian A/B-testing and ML-evaluation practice; a machine-readable
     JSON result schema; dependency-free Node scripts for sample size, analysis, SRM and result auditing. Revised
     16.10.2026 to the library's operating structure.
-  purpose: Give every comparison Cadence runs — product features, whole apps, or AI systems — a pre-registered,
+  purpose: Give every comparison — product features, whole apps, or AI systems — a pre-registered,
     statistically honest decision instead of dashboard-watching and after-the-fact storytelling, recorded so another
     agent can audit or chain it.
-  scope: Installation-wide; attached to experiment, A/B, split-test, variant, metric, conversion and significance
-    tasks in every connected project. Owns the experiment method and the decision; load-stress-testing, security-testing,
+  scope: Any project that compares variants — experiment, A/B, split-test, variant, metric, conversion and
+    significance tasks. Owns the experiment method and the decision; load-stress-testing, security-testing,
     color-system, web-design-craft and design-craft supply the variants and their measurements.
 ---
 
@@ -40,7 +40,7 @@ An A/B test is a **pre-registered decision rule**. Decide what "better" means an
 ## Output contract
 - **Pre-registration** (before launch): hypothesis, variants + parameters, unit, assignment, primary + guardrail metrics, **weighted criteria with score mappings**, MDE, α, power, sample size, duration, decision rule — written as the `designed` state of the result schema.
 - **Result** (after): the same JSON (`assets/result-schema.md`) filled with integrity checks, per-variant metrics/scores/composite, statistics with intervals, Bayesian summary, guardrail status, decision + confidence + rationale — plus a human write-up.
-- `scripts/sample-size.mjs` sizes the test; `scripts/analyze.mjs` runs the z/t tests, Bayesian comparison, SRM check and **audits a result file** (recomputes scores, composite, guardrails, integrity). In Cadence sessions (scripts not exposed) use the formulas in `assets/experiment-method.md`.
+- `scripts/sample-size.mjs` sizes the test; `scripts/analyze.mjs` runs the z/t tests, Bayesian comparison, SRM check and **audits a result file** (recomputes scores, composite, guardrails, integrity). If your agent cannot run Node scripts, use the formulas in `assets/experiment-method.md` and show the arithmetic.
 
 ## Method
 1. **Hypothesis with mechanism:** "Changing X to V moves primary metric P by ≥ MDE without harming guardrails G, because …".

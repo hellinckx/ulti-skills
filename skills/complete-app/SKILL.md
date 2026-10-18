@@ -1,8 +1,10 @@
 ---
 name: complete-app
-description: Finish every project with a user interface as a complete, well-structured product — full navigation,
-  every state designed, comprehensive central settings, help, persistence, error handling and a documented start
-  — instead of a prototype with gaps.
+description: Finish an application with a user interface as a complete product instead of a prototype with gaps —
+  full navigation, every state designed, central settings, help, persistence, error handling, a documented one-command
+  start and an end-to-end acceptance walk. Use when building, finishing, releasing or accepting any app, tool or
+  dashboard people will use, or when asked to "make it complete" or "production ready". Do not use for a single
+  isolated component, a pure library or API without UI, or visual direction alone (design-craft, web-design-craft).
 metadata:
   creator: Cadence project
   created: '2026-10-10'
@@ -10,7 +12,7 @@ metadata:
     rules of Cadence; no external template or executable scripts.
   purpose: Make the end result of UI work usable and complete on first start, with the settings and supporting screens
     a professional application is expected to have.
-  scope: Installation-wide; included with interface, release and acceptance tasks in every connected project.
+  scope: Interface, release and acceptance tasks for any application with a UI.
 ---
 
 # Complete application, not a prototype
