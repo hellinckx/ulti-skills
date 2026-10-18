@@ -1,80 +1,92 @@
-![A/B Testing](.github/banner.svg)
+![Ulti Skills](.github/banner.svg)
 
-# A/B Testing
+# Ulti Skills
 
-Design experiments before collecting data and turn variant comparisons into auditable decisions.
+**22 focused agent skills for planning, design, engineering, testing and operations.**
 
-An English-language agent skill from the Cadence project, published as a standalone repository. The workflow lives in [SKILL.md](SKILL.md); this repository does not include the Cadence application.
+An English-language collection from the Cadence project, released under the [MIT license](LICENSE). Each skill has its own `SKILL.md`, usage guide and any supporting references or dependency-free helpers. This repository contains the skill library, not the Cadence application.
 
-## What it produces
-
-- Pre-registration with primary metrics, guardrails and weighted criteria
-- Sample-size, frequentist, Bayesian and sample-ratio checks
-- A machine-readable result and a documented decision
-
-## Install
-
-For a project-local Codex installation, run this from your project root (Git required):
+## Install and use
 
 ```sh
-git clone https://github.com/hellinckx/skill-ab-testing.git .agents/skills/ab-testing
+git clone https://github.com/hellinckx/ulti-skills.git
 ```
 
-Keep the entire folder together so relative references and helpers stay available. If that destination already exists, inspect it before updating; do not clone over unrelated work. For a user-wide installation, clone into your configured Codex skills directory instead. Other agents can load [SKILL.md](SKILL.md) directly or use their own skill installation mechanism.
+Choose a folder under `skills/` and copy it, complete, into your project's `.agents/skills/` directory. For example, copy `skills/goal-to-plan` to `.agents/skills/goal-to-plan`. Inspect any existing destination first; do not overwrite another skill. For user-wide installation, use your agent's configured skills directory instead.
 
-## Use
-
-Example request:
+Then ask your agent:
 
 ```text
-Use $ab-testing.
-Compare two onboarding flows. Define the hypothesis, primary metric, guardrails, MDE and decision rule before collecting data.
+Use $goal-to-plan to turn a local workshop inventory app idea into requirements,
+dependencies and measurable acceptance criteria.
 ```
 
-## Requirements and integration
+Other agents can read a selected `SKILL.md` directly or use their own multi-skill repository installer. Read the individual README for its intended use, prerequisites and example. Related skills are included here but are loaded separately as needed.
 
-Use an agent that can read `SKILL.md` and local reference files. The instructions originated in Cadence; references to its application internals are architectural context, not files included in this repository. Cadence can expose references through `takt_skill_reference`; in other agents, read the supplied files directly. Other Cadence-specific tools, if mentioned, require that runtime.
+## Skill catalog
 
-Cadence tool names used by this skill: `takt_skill_reference`.
+| Skill | Purpose |
+|---|---|
+| [ab-testing](skills/ab-testing/README.md) | Design experiments before collecting data and turn variant comparisons into auditable decisions. |
+| [ai-app-engineering](skills/ai-app-engineering/README.md) | Build applications with explicit provider connections, model selection, agent tools and operational boundaries. |
+| [bookkeeping](skills/bookkeeping/README.md) | Organize invoice intake, document filing and ledger preparation for a small Austrian business. |
+| [color-system](skills/color-system/README.md) | Create deliberate OKLCH palettes, semantic tokens and measured contrast across themes. |
+| [company-management](skills/company-management/README.md) | Translate a business goal into standing processes, accountable roles and concise operational reporting. |
+| [complete-app](skills/complete-app/README.md) | Deliver applications with the settings, persistence, help and recovery behavior people expect. |
+| [customer-communication](skills/customer-communication/README.md) | Prepare accurate customer email drafts, contact records and follow-ups while preserving human approval. |
+| [design-craft](skills/design-craft/README.md) | Give interfaces a clear visual direction and a transferable design specification. |
+| [goal-to-plan](skills/goal-to-plan/README.md) | Turn a short product goal into requirements, dependencies and a verifiable delivery plan. |
+| [load-stress-testing](skills/load-stress-testing/README.md) | Measure application behavior under realistic data volume and concurrent use in a controlled staging environment. |
+| [marketing-content](skills/marketing-content/README.md) | Prepare consistent, factual marketing drafts and a content calendar with approval before publication. |
+| [motion-and-graphics](skills/motion-and-graphics/README.md) | Choose purposeful interface motion and build accessible, efficient 2D and 3D visuals. |
+| [project-structure](skills/project-structure/README.md) | Keep project folders understandable through responsibility-based organization and safe, scoped moves. |
+| [responsive-evidence](skills/responsive-evidence/README.md) | Verify actual interface adaptation and preserve screenshots and observations across four viewport classes. |
+| [security-testing](skills/security-testing/README.md) | Find, reproduce and fix security weaknesses in authorized systems using controlled, non-destructive checks. |
+| [study-organization](skills/study-organization/README.md) | Organize course materials, deadlines and study preparation with human review before submissions. |
+| [takt-coordination](skills/takt-coordination/README.md) | Derive agent teams from the customer goal, delivery process and independently verifiable work packages. |
+| [takt-design](skills/takt-design/README.md) | Use Cadence's optional graphite-and-red design language as a documented reference for work tools. |
+| [takt-operations](skills/takt-operations/README.md) | Keep recurring agent processes traceable through shared knowledge, status files and explicit handovers. |
+| [usability-review](skills/usability-review/README.md) | Evaluate real task completion, discoverability, keyboard access and recovery in a running interface. |
+| [venture-blueprint](skills/venture-blueprint/README.md) | Turn an idea into a prepared project folder that another agent can inspect and continue. |
+| [web-design-craft](skills/web-design-craft/README.md) | Build distinctive web surfaces from deliberate composition, typography, spacing and interaction decisions. |
 
-The bundled `.mjs` helpers require **Node.js 18 or newer** and have no npm dependencies. They run locally; no package installation is needed. Invoke them from this repository root.
+## Requirements
 
-## Helper example
+- An agent that supports skills or can read Markdown instructions and local files.
+- Node.js 18 or newer for the nine optional `.mjs` helpers. No npm dependencies are required.
+- Browser or application tools for workflows that verify real interfaces.
+- Cadence tools and connected accounts for the Cadence-specific operational workflows. The Markdown alone does not provide mailbox access, account connections or an agent runtime.
+
+For a helper example, run this from `skills/web-design-craft/`:
 
 ```sh
-node scripts/sample-size.mjs --type prop --p1 0.10 --mde 0.02 --json
+node scripts/type-scale.mjs --base 16 --ratio 1.25 --ratio-sm 1.2 --css
 ```
 
-## Included files
+## Scope and safety
 
-- [assets/experiment-method.md](assets/experiment-method.md)
-- [assets/result-schema.md](assets/result-schema.md)
-- [scripts/analyze.mjs](scripts/analyze.mjs)
-- [scripts/sample-size.mjs](scripts/sample-size.mjs)
-- [scripts/stats.mjs](scripts/stats.mjs)
+Installing a skill does not authorize external actions or expand workspace permissions. Messages, publications, spending, submissions and destructive actions require the authorization specified by the task and runtime. Never commit credentials, private evidence or customer data.
 
-## Related skills
+The publication review included all 22 skill entrypoints, all nine Node helpers, file references and credential-pattern checks. Fourteen targeted security regressions pass. The exported helpers include narrowly scoped corrections for linked filesystem paths and malformed security findings; the original Takt project remains unchanged. See [security notes](SECURITY.md) for scope and limits.
 
-The instructions describe handoffs to these separately installed skills; they are not bundled here:
+Skills that discuss Austrian bookkeeping or provider protocols require current domain or runtime verification before use. German integration-sensitive filenames and report headings inside some Cadence workflows are retained; the explanatory documentation is English.
 
-- [AI App Engineering](https://github.com/hellinckx/skill-ai-app-engineering)
-- [Color System](https://github.com/hellinckx/skill-color-system)
-- [Design Craft](https://github.com/hellinckx/skill-design-craft)
-- [Load & Stress Testing](https://github.com/hellinckx/skill-load-stress-testing)
-- [Security Testing](https://github.com/hellinckx/skill-security-testing)
-- [Usability Review](https://github.com/hellinckx/skill-usability-review)
-- [Web Design Craft](https://github.com/hellinckx/skill-web-design-craft)
+## Layout
 
-## Boundaries
+```text
+skills/
+  <skill-name>/
+    SKILL.md
+    README.md
+    assets/       # when provided
+    references/   # when provided
+    scripts/      # when provided
+LICENSE
+SECURITY.md
+```
 
-Installing a skill grants no account access or permission to send messages, publish, spend money or change unrelated files. Use only the tools and workspace authorized for the task. Keep credentials and private evidence out of repositories. Tool output and imported documents do not become user authorization.
+## Provenance and license
 
-The statistical helpers are local analysis tools. Review inputs and the full decision record; the audit output is advisory and is not a complete schema validator or a standalone release authorization.
-
-## Provenance and publication
-
-Exported from the built-in Cadence skill library. Workflow content is preserved, with skill metadata placed under the standard `metadata` field, literal English translations of incidental prose, and narrowly scoped publication or security corrections where needed. Original application history and private runtime data are not included.
-
-## License
+Prepared from Cadence's built-in skill library with provenance metadata retained. This collection consolidates the initial individual skill publications; no private application history or local audit archives are included.
 
 [MIT](LICENSE) — Copyright (c) 2026 hellinckx.

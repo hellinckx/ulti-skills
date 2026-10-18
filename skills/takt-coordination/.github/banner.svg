@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="440" viewBox="0 0 1440 440" role="img" aria-labelledby="title desc">
+<title id="title">Cadence Coordination — Agent Skill</title><desc id="desc">Derive agent teams from the customer goal, delivery process and independently verifiable work packages.</desc>
+<rect width="1440" height="440" fill="#111013"/><path d="M72 76h54" stroke="#e54960" stroke-width="5"/>
+<text x="146" y="83" fill="#b8afb6" font-family="system-ui,sans-serif" font-size="20" letter-spacing="4">CADENCE / AGENT SKILLS</text>
+<text x="72" y="238" fill="#f1edf0" font-family="system-ui,sans-serif" font-size="68" font-weight="650">Cadence Coordination</text>
+<text x="74" y="365" fill="#b8afb6" font-family="system-ui,sans-serif" font-size="22">A focused workflow. Clear outputs. Evidence you can inspect.</text>
+<path d="M1250 330v-65m25 65V220m25 110V155m25 175V90" stroke="#e54960" stroke-width="9"/>
+</svg>

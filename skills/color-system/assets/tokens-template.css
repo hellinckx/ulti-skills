@@ -1,0 +1,116 @@
+/*
+ * color-system — token template
+ * Copy into a project (e.g. src/styles/tokens.css) and RE-SEED.
+ * Values are an example (blue-seeded, H≈250). Change H to the brand hue and
+ * regenerate; keep the L/C structure. Verify contrast per theme after editing.
+ * See assets/palette-recipe.md for the method.
+ *
+ * Colors are authored in OKLCH (perceptual). Modern engines render it directly.
+ * If you must support old engines, add a hex fallback line before each var.
+ */
+
+:root {
+  /* ---- Dark theme (default) ---- */
+  --bg:             oklch(0.17 0.012 250);
+  --surface:        oklch(0.21 0.014 250);
+  --surface-2:      oklch(0.25 0.016 250);
+  --overlay:        oklch(0.14 0.012 250 / 0.72);
+
+  --text:           oklch(0.95 0.010 250);
+  --text-muted:     oklch(0.78 0.020 250);
+  --text-subtle:    oklch(0.62 0.020 250);
+  --text-on-accent: oklch(0.15 0.010 255); /* near-black: white on a mid accent (L 0.62) is only ~2.7:1 — verified by scripts/palette.mjs */
+
+  --border:         oklch(0.32 0.018 250);
+  --border-strong:  oklch(0.42 0.020 250);
+  --divider:        oklch(0.28 0.016 250);
+
+  --accent:         oklch(0.62 0.170 255);
+  --accent-hover:   oklch(0.67 0.170 255);
+  --accent-pressed: oklch(0.57 0.170 255);
+  --accent-muted:   oklch(0.40 0.060 255);
+
+  --secondary:      oklch(0.66 0.130 190); /* optional 2nd brand color, use sparingly */
+
+  --success:        oklch(0.72 0.150 150);
+  --success-bg:     oklch(0.30 0.060 150);
+  --success-text:   oklch(0.90 0.080 150);
+  --warning:        oklch(0.80 0.140 85);
+  --warning-bg:     oklch(0.32 0.060 85);
+  --warning-text:   oklch(0.92 0.080 85);
+  --danger:         oklch(0.64 0.190 25);
+  --danger-bg:      oklch(0.30 0.090 25);
+  --danger-text:    oklch(0.90 0.090 25);
+  --info:           oklch(0.70 0.120 240);
+  --info-bg:        oklch(0.30 0.060 240);
+  --info-text:      oklch(0.90 0.070 240);
+
+  --focus-ring:     oklch(0.72 0.180 255);
+
+  /* Categorical data series: matched L/C, stepped H */
+  --series-1: oklch(0.70 0.14 255);
+  --series-2: oklch(0.70 0.14 200);
+  --series-3: oklch(0.70 0.14 150);
+  --series-4: oklch(0.70 0.14 90);
+  --series-5: oklch(0.70 0.14 40);
+  --series-6: oklch(0.70 0.14 350);
+}
+
+/* ---- Light theme ----
+ * Not an inversion: lightness is re-picked. Apply via data-theme or media query. */
+:root[data-theme="light"] {
+  --bg:             oklch(0.99 0.004 250);
+  --surface:        oklch(0.975 0.006 250);
+  --surface-2:      oklch(0.95 0.008 250);
+  --overlay:        oklch(0.30 0.010 250 / 0.40);
+
+  --text:           oklch(0.22 0.016 250);
+  --text-muted:     oklch(0.40 0.020 250);
+  --text-subtle:    oklch(0.50 0.020 250);
+  --text-on-accent: oklch(0.99 0.006 255);
+
+  --border:         oklch(0.90 0.010 250);
+  --border-strong:  oklch(0.82 0.014 250);
+  --divider:        oklch(0.93 0.008 250);
+
+  --accent:         oklch(0.55 0.170 255);
+  --accent-hover:   oklch(0.50 0.170 255);
+  --accent-pressed: oklch(0.45 0.170 255);
+  --accent-muted:   oklch(0.92 0.050 255);
+
+  --secondary:      oklch(0.55 0.120 190);
+
+  --success:        oklch(0.55 0.150 150);
+  --success-bg:     oklch(0.94 0.050 150);
+  --success-text:   oklch(0.35 0.100 150);
+  --warning:        oklch(0.65 0.140 85);
+  --warning-bg:     oklch(0.95 0.060 85);
+  --warning-text:   oklch(0.40 0.090 85);
+  --danger:         oklch(0.53 0.190 25);
+  --danger-bg:      oklch(0.95 0.060 25);
+  --danger-text:    oklch(0.40 0.120 25);
+  --info:           oklch(0.55 0.120 240);
+  --info-bg:        oklch(0.94 0.050 240);
+  --info-text:      oklch(0.38 0.080 240);
+
+  --focus-ring:     oklch(0.55 0.180 255);
+
+  --series-1: oklch(0.58 0.15 255);
+  --series-2: oklch(0.58 0.15 200);
+  --series-3: oklch(0.58 0.15 150);
+  --series-4: oklch(0.58 0.15 90);
+  --series-5: oklch(0.58 0.15 40);
+  --series-6: oklch(0.58 0.15 350);
+}
+
+/* Follow the OS when no explicit theme is set. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    /* mirror the light-theme block above or structure with a shared selector */
+  }
+}
+
+/* Respect reduced-contrast vs. increased-contrast requests. */
+@media (prefers-contrast: more) {
+  :root { --text-muted: var(--text); --border: var(--border-strong); }
+}
