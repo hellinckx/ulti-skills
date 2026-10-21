@@ -2,7 +2,7 @@
 
 # Ulti Skills
 
-**15 general-purpose agent skills for planning, design, engineering, 3D visualisation and quality.**
+**16 general-purpose agent skills for planning, design, engineering, 3D visualisation and quality.**
 
 An English-language collection, most of it from the Cadence project, released under the [MIT license](LICENSE). Each skill has its own `SKILL.md`, usage guide and any supporting references or dependency-free helpers. This repository contains the skill library, not the Cadence application.
 
@@ -55,6 +55,7 @@ Other agents can read a selected `SKILL.md` directly or use their own multi-skil
 | [complete-app](skills/complete-app/README.md) | Deliver applications with the settings, persistence, help and recovery behavior people expect. |
 | [design-craft](skills/design-craft/README.md) | Give interfaces a clear visual direction and a transferable design specification. |
 | [goal-to-plan](skills/goal-to-plan/README.md) | Turn a short product goal into requirements, dependencies and a verifiable delivery plan. |
+| [iso-world-site](skills/iso-world-site/README.md) | Build websites as a live isometric 3D diorama the camera travels through on scroll — plain HTML, CSS and canvas. |
 | [load-stress-testing](skills/load-stress-testing/README.md) | Measure application behavior under realistic data volume and concurrent use in a controlled staging environment. |
 | [motion-and-graphics](skills/motion-and-graphics/README.md) | Choose purposeful interface motion and build accessible, efficient 2D and 3D visuals. |
 | [project-structure](skills/project-structure/README.md) | Keep project folders understandable through responsibility-based organization and safe, scoped moves. |
@@ -81,7 +82,7 @@ node scripts/type-scale.mjs --base 16 --ratio 1.25 --ratio-sm 1.2 --css
 
 Installing a skill does not authorize external actions or expand workspace permissions. Messages, publications, spending, submissions and destructive actions require the authorization specified by the task and runtime. Never commit credentials, private evidence or customer data.
 
-The publication review covered the original 14 skill entrypoints, all nine Node helpers, file references and credential-pattern checks, and fourteen targeted security regressions passed. `3d-system-mirror` (Markdown only, no helpers) was added afterwards and checked for credential patterns, local paths and broken references. The exported helpers include narrowly scoped corrections for linked filesystem paths and malformed security findings; the original Takt project remains unchanged. See [security notes](SECURITY.md) for scope and limits.
+The publication review covered the original 14 skill entrypoints, all nine Node helpers, file references and credential-pattern checks, and fourteen targeted security regressions passed. `3d-system-mirror` (Markdown only, no helpers) was added afterwards and checked for credential patterns, local paths and broken references. `iso-world-site` (Markdown only, no helpers) was added on 2026-10-21 with the same checks. The exported helpers include narrowly scoped corrections for linked filesystem paths and malformed security findings; the original Takt project remains unchanged. See [security notes](SECURITY.md) for scope and limits.
 
 Provider protocol examples require verification against the runtime you actually use. Provenance metadata and stable schema identifiers are retained; the collection does not prescribe a Cadence house style.
 
@@ -103,6 +104,6 @@ SECURITY.md
 
 ## Provenance and license
 
-Prepared from Cadence's built-in skill library with provenance metadata retained; `3d-system-mirror` was written separately from a reviewed 3D office build and generalised for publication. This curated collection keeps the reusable project workflows; domain-specific business routines and the Cadence house design system are excluded. No private application history or local audit archives are included.
+Prepared from Cadence's built-in skill library with provenance metadata retained; `3d-system-mirror` was written separately from a reviewed 3D office build and generalised for publication; `iso-world-site` is a written style and workflow description without code or images. This curated collection keeps the reusable project workflows; domain-specific business routines and the Cadence house design system are excluded. No private application history or local audit archives are included.
 
 [MIT](LICENSE) — Copyright (c) 2026 hellinckx.

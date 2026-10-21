@@ -6,6 +6,8 @@ The publication review covers the original 14 skill entrypoints and their suppor
 
 `skills/3d-system-mirror` was added on 2026-10-18 after that review. It contains Markdown only (no scripts) and was checked for credential patterns, local personal paths and broken references. Its code patterns are illustrative and run only inside the reader's own project.
 
+`skills/iso-world-site` was added on 2026-10-21. It contains Markdown only (no scripts, assets or images) and was checked for credential patterns, local personal paths and broken references.
+
 ## Corrected helper behavior
 
 - `skills/venture-blueprint/scripts/scaffold.mjs` rejects symbolic links, directory junctions and hardlinked project files before generating templates, and guards configuration traversal.
