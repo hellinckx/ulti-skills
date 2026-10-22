@@ -1,26 +1,21 @@
 ---
 name: ai-app-engineering
 description: Build applications that use AI models and agents — a provider abstraction with catalog-driven model
-  selection, desktop apps that run on the user's own ChatGPT/Codex plan through the official Codex App Server,
-  API-key and local providers, encrypted keys, agent loops with narrow tools, structured output, quotas, cost and
-  tests with a fake provider. Use when a request adds AI to a project (chatbot, assistant, agent, summarising,
-  classification, generation, RAG) or builds a multi-agent system. Do not use for prompt wording alone, for
-  comparing models or prompts (ab-testing) or for proxying one person's subscription to other users.
+  selection, API-key and local providers, desktop apps on the user's own ChatGPT/Codex plan via the official
+  Codex App Server, securely stored keys, agent loops with narrow tools, structured output, quotas, cost
+  tracking and tests with a fake provider. Use when a project adds AI (chatbot, assistant, agent, summarising,
+  classification, generation, RAG) or builds a multi-agent system. Not for prompt wording alone or for comparing
+  models or prompts (ab-testing).
 metadata:
   creator: Cadence project
   created: '2026-10-10'
-  creation-method: Editorial Markdown guide derived from Cadence's own provider, model-policy and Codex App Server
-    implementation (src/main/model-providers.mjs, provider-keys.mjs, model-policy.mjs, codex-app-server.mjs, codex-isolation.mjs,
-    ADR-0002, ADR-0013) plus general provider practice; no external template or executable scripts.
-  purpose: Whenever a project needs AI features or an AI agent system, build it on a proven architecture so
-    connection, model choice, security and operation work from the first start.
-  scope: Planning, implementation, backend, integration and review tasks that involve AI, models, agents or
-    providers.
+  updated: '2026-10-22'
+  origin: Derived from Cadence's provider, model-policy and Codex App Server implementation plus general provider practice.
 ---
 
 # Engineering AI applications
 
-Use this when a request adds AI to a project ("add AI", chatbot, assistant, agent, summarising, classification, generation, RAG) or builds an agent system. Pick the connection type first, then follow the shared architecture.
+Pick the connection type first, then follow the shared architecture. Provider protocols change: treat the method names and parameters below as a map, and verify them against the installed version or current official documentation before relying on them.
 
 ## 1. Choose the connection type
 | Situation | Use |
@@ -35,7 +30,7 @@ A subscription sign-in belongs to the person who signed in and runs on their mac
 - **Module layout:** `src/ai/providers/<provider>.{ts,mjs,py}` (one adapter each, same interface), `src/ai/models.*` (catalog and selection), `src/ai/keys.*` (secure key store), `src/ai/prompts/`, `src/ai/tools/`, `src/ai/schemas/` (JSON Schemas for structured output), `src/ai/agents/` (loops, orchestration), `tests/ai/` (fixtures and evaluations). UI never calls a provider directly; it calls the domain service, which calls the adapter.
 - **Provider registry:** presets with `id`, `name`, `baseUrl`, `needsKey`, `local`, `note`. Settings per provider: `enabled` (default off), `baseUrl` (validated `https?://`), `models` (fetched list), `allowedModels` (null = all, otherwise an allow-list chosen by the admin). An `active` provider of `none` means nothing runs until someone enables a provider.
 - **Model selection id:** store one string per agent/feature: `modelId` for the primary provider and `providerId::modelId` for others. Parse it at the call site, check that provider and model are enabled and allowed, and send only the raw model id to the API.
-- **Model catalog from the provider, never hard-coded:** fetch `GET {baseUrl}/models` (Ollama fallback `/api/tags`; Codex `model/list`), keep only ids matching `^[\w.:/@+-]{1,200}$` and harmless metadata (display name, context length, modalities, price per token), at most 400 entries, sorted. Show the date of the last fetch. A default model is a setting with fallback text, not a constant buried in code Read the current default from the catalog or the provider's documentation.
+- **Model catalog from the provider, never hard-coded:** fetch `GET {baseUrl}/models` (Ollama fallback `/api/tags`; Codex `model/list`), keep only ids matching `^[\w.:/@+-]{1,200}$` and harmless metadata (display name, context length, modalities, price per token), at most 400 entries, sorted. Show the date of the last fetch. A default model is a setting with fallback text, not a constant buried in code; read the current default from the catalog or the provider's documentation.
 - **Reasoning effort per model:** keep the efforts the catalog reports per model (`supportedReasoningEfforts`) and validate the requested effort against them. If a model or effort is unavailable, fail with a clear message naming what is available. **Never silently switch to another model.**
 - **Keys:** store API keys only encrypted with the operating system (Electron `safeStorage`/Windows DPAPI, macOS Keychain, libsecret; on servers a secret manager or environment variables). Never in config files, the repository, logs, prompts, screenshots or error messages; redact anything key-like in logs. If encryption is unavailable, do not store the key. Pass keys to child processes only as environment variables (for example `APP_PROVIDER_<ID>_KEY`, referenced by name via `env_key`).
 - **Settings UI:** one "AI providers" section in the central settings: per provider a switch, address, key field (write-only, shows "stored"), "Load models", an allow-list with search, a test button that runs a real minimal request, and per agent/feature a model picker plus effort picker that only offers what the catalog reports. Show connection state, plan/quota where available and the last error with one next step.

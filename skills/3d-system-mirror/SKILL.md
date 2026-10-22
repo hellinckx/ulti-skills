@@ -1,22 +1,16 @@
 ---
 name: 3d-system-mirror
-description: Mirror a running app or system (agents, services, jobs, queues, pipelines) as an interactive 3D world
-  inside its own UI — a building whose floors open up, rooms per activity, characters with faces for the workers,
-  speech bubbles with the real current task, live screens as canvas textures you can sit at, select and copy from,
-  a god view, first person and split screen — where every visible number and sentence comes from real data. Use
-  when someone wants to "see" their system as a game-like world, a 3D office, a living org chart, a digital twin
-  or an observable agent organisation. Do not use for plain charts or dashboards, for data the app cannot actually
-  read, or to stage fake activity for a demo.
+description: Mirror a running system (agents, services, jobs, queues, pipelines) as an interactive 3D world
+  inside its own UI — a building whose floors open up, rooms per activity, characters with faces for the
+  workers, bubbles with the real current task, live screens as usable canvas textures, god view, first person
+  and split screen — where every visible number and sentence comes from real data. Use when someone wants to see
+  their system as a game-like world, 3D office, living org chart or digital twin. Not for plain dashboards, data
+  the app cannot read, or staged fake activity.
 metadata:
   creator: hellinckx
   created: '2026-10-18'
-  creation-method: Written from building and accepting a 3D office for a 14-agent research organisation in a desktop
-    app (Electron, React, three.js with @react-three/fiber and drei, procedural geometry, no model files), including
-    every correction the requester made while reviewing it in the running app.
-  purpose: Turn the state of a real system into a world people enjoy watching without ever showing invented
-    activity.
-  scope: Any app with live internal state and a 3D-capable frontend (WebGL). Pairs with motion-and-graphics for
-    general 3D practice, usability-review and responsive-evidence for verification.
+  updated: '2026-10-22'
+  origin: Written from building and accepting a 3D office for a 14-agent organisation (Electron, React, three.js, procedural geometry).
 ---
 
 # 3D system mirror

@@ -2,28 +2,28 @@
 
 # Ulti Skills
 
-**16 general-purpose agent skills for planning, design, engineering, 3D visualisation and quality.**
+**12 agent skills for planning, design, engineering, 3D visualisation and quality — each one kept only because it adds knowledge or a helper an agent would not have on its own.**
 
-An English-language collection, most of it from the Cadence project, released under the [MIT license](LICENSE). Each skill has its own `SKILL.md`, usage guide and any supporting references or dependency-free helpers. This repository contains the skill library, not the Cadence application.
+An English-language collection, most of it from the Cadence project, released under the [MIT license](LICENSE). Each skill is a self-contained folder with a `SKILL.md`, a short README and any references or dependency-free helpers it needs.
 
 ## Visual examples
 
-Real browser renders of the included example sources. The interfaces use fictional data; these are illustrations of the methods, not customer work or guaranteed outputs from an agent run. Click any image for the full-size PNG.
+Real browser renders of the included example sources. The interfaces use fictional data; they illustrate the methods and are not guaranteed agent output. Click any image for the full-size PNG.
 
 | Interface design | Editorial web design |
 |---|---|
 | [![Project workspace with deliberate typography and spacing](.github/examples/interface.png)](.github/examples/interface.png) | [![Editorial landing page with asymmetric composition](.github/examples/web-design.png)](.github/examples/web-design.png) |
-| [Design Craft](skills/design-craft/README.md) · [Complete App](skills/complete-app/README.md) | [Web Design Craft](skills/web-design-craft/README.md) |
+| [Design Craft](skills/design-craft/README.md) · [Complete App](skills/complete-app/README.md) | [Design Craft](skills/design-craft/README.md) |
 
 | Generated color system | Four real viewport classes |
 |---|---|
 | [![Generated OKLCH light and dark palettes with contrast results](.github/examples/color-system.png)](.github/examples/color-system.png) | [![Responsive interface captures at four real viewport sizes](.github/examples/responsive.png)](.github/examples/responsive.png) |
-| [Color System](skills/color-system/README.md) · 42/42 declared contrast pairs pass | [Responsive Evidence](skills/responsive-evidence/README.md) · full-size captures included |
+| [Color System](skills/color-system/README.md) · 42/42 declared contrast pairs pass | [Interface Review](skills/interface-review/README.md) · full-size captures included |
 
 | Validation and recovery | Motion specification |
 |---|---|
 | [![Real form error with preserved field focus](.github/examples/form-recovery.png)](.github/examples/form-recovery.png) | [![Static motion state sheet with timings and easing](.github/examples/motion-states.png)](.github/examples/motion-states.png) |
-| [Usability Review](skills/usability-review/README.md) · exercised in Chromium | [Motion & Graphics](skills/motion-and-graphics/README.md) · static illustrated states |
+| [Interface Review](skills/interface-review/README.md) · exercised in Chromium | [Motion & Graphics](skills/motion-and-graphics/README.md) · static illustrated states |
 
 [Example source and reproduction steps](examples/README.md) · [Capture metadata](.github/examples/capture-info.json)
 
@@ -33,46 +33,42 @@ Real browser renders of the included example sources. The interfaces use fiction
 git clone https://github.com/hellinckx/ulti-skills.git
 ```
 
-Choose a folder under `skills/` and copy it, complete, into your project's `.agents/skills/` directory. For example, copy `skills/goal-to-plan` to `.agents/skills/goal-to-plan`. Inspect any existing destination first; do not overwrite another skill. For user-wide installation, use your agent's configured skills directory instead.
-
-Then ask your agent:
+Copy a folder from `skills/`, complete, into your agent's skills directory — for Claude Code `.claude/skills/<name>` (project) or `~/.claude/skills/<name>` (user), for Codex `.agents/skills/<name>`. Inspect an existing destination first; do not overwrite another skill. Then ask, for example:
 
 ```text
 Use $goal-to-plan to turn a local workshop inventory app idea into requirements,
 dependencies and measurable acceptance criteria.
 ```
 
-Other agents can read a selected `SKILL.md` directly or use their own multi-skill repository installer. Read the individual README for its intended use, prerequisites and example. Related skills are included here but are loaded separately as needed.
+Other agents can read a `SKILL.md` directly. Related skills are referenced by name and loaded separately when needed.
 
 ## Skill catalog
 
 | Skill | Purpose |
 |---|---|
-| [3d-system-mirror](skills/3d-system-mirror/README.md) | Mirror a running system — agents, services, jobs — as an explorable 3D world where every visible word comes from real data. |
-| [ab-testing](skills/ab-testing/README.md) | Design experiments before collecting data and turn variant comparisons into auditable decisions. |
-| [ai-app-engineering](skills/ai-app-engineering/README.md) | Build applications with explicit provider connections, model selection, agent tools and operational boundaries. |
-| [color-system](skills/color-system/README.md) | Create deliberate OKLCH palettes, semantic tokens and measured contrast across themes. |
-| [complete-app](skills/complete-app/README.md) | Deliver applications with the settings, persistence, help and recovery behavior people expect. |
-| [design-craft](skills/design-craft/README.md) | Give interfaces a clear visual direction and a transferable design specification. |
-| [goal-to-plan](skills/goal-to-plan/README.md) | Turn a short product goal into requirements, dependencies and a verifiable delivery plan. |
-| [iso-world-site](skills/iso-world-site/README.md) | Build websites as a live isometric 3D diorama the camera travels through on scroll — plain HTML, CSS and canvas. |
-| [load-stress-testing](skills/load-stress-testing/README.md) | Measure application behavior under realistic data volume and concurrent use in a controlled staging environment. |
-| [motion-and-graphics](skills/motion-and-graphics/README.md) | Choose purposeful interface motion and build accessible, efficient 2D and 3D visuals. |
-| [project-structure](skills/project-structure/README.md) | Keep project folders understandable through responsibility-based organization and safe, scoped moves. |
-| [responsive-evidence](skills/responsive-evidence/README.md) | Verify actual interface adaptation and preserve screenshots and observations across four viewport classes. |
-| [security-testing](skills/security-testing/README.md) | Find, reproduce and fix security weaknesses in authorized systems using controlled, non-destructive checks. |
-| [usability-review](skills/usability-review/README.md) | Evaluate real task completion, discoverability, keyboard access and recovery in a running interface. |
-| [venture-blueprint](skills/venture-blueprint/README.md) | Turn an idea into a prepared project folder that another agent can inspect and continue. |
-| [web-design-craft](skills/web-design-craft/README.md) | Build distinctive web surfaces from deliberate composition, typography, spacing and interaction decisions. |
+| **Plan and build** | |
+| [goal-to-plan](skills/goal-to-plan/README.md) | Turn a short or vague goal into an honest, ordered plan with visible assumptions and measurable acceptance. |
+| [complete-app](skills/complete-app/README.md) | Deliver applications without prototype gaps: every state, settings where needed, persistence, help, recovery. |
+| [ai-app-engineering](skills/ai-app-engineering/README.md) | Build AI features and agents with explicit providers, catalog-driven model selection, narrow tools and tests. |
+| **Design** | |
+| [design-craft](skills/design-craft/README.md) | Give interfaces a deliberate direction, scales, grid and component states, recorded once in `docs/DESIGN.md`. |
+| [color-system](skills/color-system/README.md) | Create OKLCH palettes, semantic tokens and measured contrast across themes. |
+| [motion-and-graphics](skills/motion-and-graphics/README.md) | Choose purposeful motion and build accessible, efficient 2D and 3D visuals. |
+| [iso-world-site](skills/iso-world-site/README.md) | Build websites as a live isometric diorama the camera travels through on scroll — plain HTML, CSS and canvas. |
+| [3d-system-mirror](skills/3d-system-mirror/README.md) | Mirror a running system as an explorable 3D world where every visible word comes from real data. |
+| **Verify** | |
+| [interface-review](skills/interface-review/README.md) | Prove a running interface works: task walkthroughs, keyboard use and inspected screenshots in four viewport classes. |
+| [ab-testing](skills/ab-testing/README.md) | Pre-register experiments and turn variant comparisons into auditable decisions. |
+| [load-stress-testing](skills/load-stress-testing/README.md) | Measure behaviour under realistic data volume and concurrency in a controlled staging environment. |
+| [security-testing](skills/security-testing/README.md) | Find, reproduce and fix security weaknesses in your own systems with non-destructive checks. |
 
 ## Requirements
 
 - An agent that supports skills or can read Markdown instructions and local files.
-- Node.js 18 or newer for the nine optional `.mjs` helpers. No npm dependencies are required.
-- Browser or application tools for workflows that verify real interfaces.
-- The integrations required by your own project. The collection does not provide an agent runtime or account connections.
+- Node.js 18 or newer for the optional `.mjs` helpers (color-system, design-craft, ab-testing, load-stress-testing, security-testing). No npm dependencies.
+- Browser or application automation for the workflows that verify real interfaces.
 
-For a helper example, run this from `skills/web-design-craft/`:
+Helper example, run from `skills/design-craft/`:
 
 ```sh
 node scripts/type-scale.mjs --base 16 --ratio 1.25 --ratio-sm 1.2 --css
@@ -80,30 +76,31 @@ node scripts/type-scale.mjs --base 16 --ratio 1.25 --ratio-sm 1.2 --css
 
 ## Scope and safety
 
-Installing a skill does not authorize external actions or expand workspace permissions. Messages, publications, spending, submissions and destructive actions require the authorization specified by the task and runtime. Never commit credentials, private evidence or customer data.
+Installing a skill does not authorize external actions or widen workspace permissions. Messages, publications, spending, submissions and destructive actions still need the authorization the task and runtime require. Never commit credentials, private evidence or customer data. See [security notes](SECURITY.md) for the review scope and its limits.
 
-The publication review covered the original 14 skill entrypoints, all nine Node helpers, file references and credential-pattern checks, and fourteen targeted security regressions passed. `3d-system-mirror` (Markdown only, no helpers) was added afterwards and checked for credential patterns, local paths and broken references. `iso-world-site` (Markdown only, no helpers) was added on 2026-10-21 with the same checks. The exported helpers include narrowly scoped corrections for linked filesystem paths and malformed security findings; the original Takt project remains unchanged. See [security notes](SECURITY.md) for scope and limits.
+## Changes on 2026-10-22
 
-Provider protocol examples require verification against the runtime you actually use. Provenance metadata and stable schema identifiers are retained; the collection does not prescribe a Cadence house style.
+The collection was reduced from 16 to 12 skills:
+
+- `web-design-craft` was merged into **design-craft** (one method, one design record; the type-scale helper moved with it).
+- `usability-review` and `responsive-evidence` were merged into **interface-review** (one acceptance pass with one report).
+- `venture-blueprint` was removed; its honest idea check and research rules now live in **goal-to-plan**. The 15-file handoff kit added process overhead without improving the result.
+- `project-structure` was removed: its rules restate common conventions an agent already follows, and its "move files when you touch them" rule invited scope creep.
+
+All remaining skills got shorter, trigger-precise descriptions, current cross-references and compact READMEs.
 
 ## Layout
 
 ```text
-skills/
-  <skill-name>/
-    SKILL.md
-    README.md
-    assets/       # when provided
-    references/   # when provided
-    scripts/      # when provided
-examples/         # illustrative HTML sources and optional renderer
-.github/examples/ # real PNG captures and metadata
-LICENSE
-SECURITY.md
+skills/<skill-name>/
+  SKILL.md        instructions the agent loads
+  README.md       what it produces and an example request
+  LICENSE
+  assets/ references/ scripts/   when provided
+examples/         illustrative HTML sources and optional renderer
+.github/examples/ real PNG captures and metadata
 ```
 
-## Provenance and license
-
-Prepared from Cadence's built-in skill library with provenance metadata retained; `3d-system-mirror` was written separately from a reviewed 3D office build and generalised for publication; `iso-world-site` is a written style and workflow description without code or images. This curated collection keeps the reusable project workflows; domain-specific business routines and the Cadence house design system are excluded. No private application history or local audit archives are included.
+## License
 
 [MIT](LICENSE) — Copyright (c) 2026 hellinckx.

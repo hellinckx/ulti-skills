@@ -1,26 +1,15 @@
 ---
 name: ab-testing
-description: Design, run, analyse and decide A/B, split and multivariate experiments scientifically — for whole
-  apps, single features, or AI systems (prompts, models, parameters) — and emit a pre-registered, machine-readable
-  result an AI can audit. Lock hypothesis, primary metric, guardrails and weighted criteria BEFORE data; size for
-  power and MDE; check A/A and sample-ratio mismatch; analyse frequentist and Bayesian with effect sizes and intervals;
-  avoid peeking or use valid sequential methods. Use whenever two or more variants are compared or someone asks
-  whether a change is really better (experiment, split test, variant, conversion, metric, significance, eval set,
-  prompt comparison). Do not use for pure load or security measurement (load-stress-testing, security-testing supply
-  those metrics) or for a one-off descriptive report with no comparison.
+description: Design, run, analyse and decide A/B, split and multivariate experiments — for features, whole apps
+  or AI systems (prompts, models, parameters) — with hypothesis, primary metric, guardrails and weights locked
+  before data, power and sample size, SRM checks, frequentist and Bayesian analysis, and a machine-readable
+  result that helper scripts audit. Use whenever variants are compared or someone asks whether a change is
+  really better. Not for a descriptive report with no comparison.
 metadata:
   creator: Cadence project
   created: '2026-10-16'
-  creation-method: Editorial Markdown guide written in the Cadence repository. Experiment-design method condensed
-    from accepted causal-inference, frequentist and Bayesian A/B-testing and ML-evaluation practice; a machine-readable
-    JSON result schema; dependency-free Node scripts for sample size, analysis, SRM and result auditing. Revised
-    16.10.2026 to the library's operating structure.
-  purpose: Give every comparison — product features, whole apps, or AI systems — a pre-registered,
-    statistically honest decision instead of dashboard-watching and after-the-fact storytelling, recorded so another
-    agent can audit or chain it.
-  scope: Any project that compares variants — experiment, A/B, split-test, variant, metric, conversion and
-    significance tasks. Owns the experiment method and the decision; load-stress-testing, security-testing,
-    color-system, web-design-craft and design-craft supply the variants and their measurements.
+  updated: '2026-10-22'
+  origin: Causal-inference, frequentist, Bayesian and ML-evaluation practice with dependency-free Node helpers.
 ---
 
 # Experiments that decide, not dashboards that reassure
@@ -75,7 +64,7 @@ A/A arms show no persistent difference · **SRM** chi-square of observed vs plan
 - **Multiple comparisons:** Bonferroni or Benjamini–Hochberg; non-pre-registered segments are hypothesis generation only.
 
 ## 7. The user-analysis layer
-Quantitative behaviour (funnels, drop-off, retention, task completion, rage clicks, time-to-task) and qualitative signal (replays, tickets, surveys, interviews, preference votes) become **scored criteria with weights** (e.g. a clarity score 1–5 mapped linearly). Gather the usability signal with usability-review; weight it here.
+Quantitative behaviour (funnels, drop-off, retention, task completion, rage clicks, time-to-task) and qualitative signal (replays, tickets, surveys, interviews, preference votes) become **scored criteria with weights** (e.g. a clarity score 1–5 mapped linearly). Gather the usability signal with interface-review; weight it here.
 
 ## 8. A/B testing AI systems
 Prompts, models and parameters are variant **parameters**; the eval set is the traffic. Representative, versioned eval set with a **locked holdout**; metric layers: deterministic (exact/regex, pass@k, tool-call validity, latency, tokens, cost) + rubric (3–6 anchored dimensions) + pairwise preference. LLM-as-judge needs order randomization, blinding, length control and calibration against human labels (report κ). Items run through every variant → **paired** tests (McNemar / paired-t / Wilcoxon) with bootstrap CIs; cost and latency are guardrails; report on the holdout.
@@ -99,16 +88,15 @@ Peeking and stopping at p < 0.05 · HARKing (choosing metric/segment after data)
 ## Works with (library handoffs)
 - **load-stress-testing** — produces p50/p95/p99, throughput, error rate for performance variants; you decide whether a difference is real and whether it clears the scorecard. Latency is usually a guardrail.
 - **security-testing** — security correctness is **never** a weighted trade-off: any regression is a hard guardrail; it supplies the signal.
-- **color-system / web-design-craft / design-craft** — build design variants (palette, layout, copy); keep contrast and accessibility as guardrails.
-- **usability-review** — gathers the qualitative user signal you weight.
+- **color-system / design-craft** — build design variants (palette, layout, copy); keep contrast and accessibility as guardrails.
+- **interface-review** — gathers the observed task signal you weight.
 - **ai-app-engineering** — builds the eval harness for AI variants; you own the statistics and the decision.
 
 ## Reference files (read on demand)
-Read the following files directly from this skill folder:
 - `assets/experiment-method.md` — formulas with worked numbers (power, MDE, z/t tests, CUPED, Beta-Binomial, sequential methods, SRM, corrections, novelty/primacy), the AI-eval rubric, factorial/bandits, cross-skill variant sources.
 - `assets/result-schema.md` — the pre-registration/result JSON schema, a filled arithmetic-checked example, read-back rules.
 
-Scripts (run in Claude/Codex or copy into the project; dependency-free Node ≥ 18):
+Scripts (dependency-free Node ≥ 18; run in place or copy into the project):
 - `scripts/sample-size.mjs --type prop|mean … [--n]` — n per arm from MDE (or MDE from n), Bonferroni for > 2 arms.
 - `scripts/analyze.mjs prop|mean|srm|audit …` — two-proportion z / Welch t with CI and effect size, Bayesian P(B>A) + credible interval + expected loss, SRM chi-square, and **audit** of a result file (recomputes scores, composite, guardrails, integrity).
 - `scripts/stats.mjs` — the shared primitives (normal quantile/CDF, χ², t, Beta sampling).

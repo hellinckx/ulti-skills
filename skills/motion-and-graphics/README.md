@@ -1,59 +1,35 @@
-![Motion & Graphics](.github/banner.svg)
-
 # Motion & Graphics
 
 Choose purposeful interface motion and build accessible, efficient 2D and 3D visuals.
 
-An English-language agent skill from the Cadence project, included in the Ulti Skills collection. The workflow lives in [SKILL.md](SKILL.md); this repository does not include the Cadence application.
+The workflow lives in [SKILL.md](SKILL.md).
 
 ## What it produces
 
-- Motion decisions, curves, duration and reduced-motion paths
-- SVG, Canvas, WebGL and three.js / React Three Fiber guidance with performance budgets
-- Game HUD states and observed performance checks
+- Timing, easing and reduced-motion rules for interface motion
+- Canvas 2D and three.js / React Three Fiber practice, including readable text in 3D
+- Performance budgets with measured fps and draw calls
 
 ## Visual example
 
-### A motion state sheet
+[![Motion specification](../../.github/examples/motion-states.png)](../../.github/examples/motion-states.png)
 
-![A motion state sheet](../../.github/examples/motion-states.png)
+Static illustrated states with timing, easing and reduced-motion guidance — not a recorded animation.
 
-A static, authored specification showing entry, settling and final states, with timing, easing and a reduced-motion alternative. This is not a recorded animation.
-
-[Full-size image](../../.github/examples/motion-states.png) · [HTML source](../../examples/motion.html) · [Reproduce the captures](../../examples/README.md)
-
-## Install
-
-For a project-local Codex installation, run this from your project root (Git required):
-
-```sh
-git clone https://github.com/hellinckx/ulti-skills.git
-```
-
-Copy `ulti-skills/skills/motion-and-graphics` into your project at `.agents/skills/motion-and-graphics`. Keep the entire skill folder together so relative references and helpers stay available. If that destination already exists, inspect it before updating; do not clone over unrelated work. For a user-wide installation, copy the selected skill folder into your configured Codex skills directory instead. Other agents can load [SKILL.md](SKILL.md) directly or use their own skill installation mechanism.
+[HTML source](../../examples/motion.html) · [Reproduce the captures](../../examples/README.md)
 
 ## Use
 
-Example request:
+Copy this folder, complete, into your agent's skills directory (for example `.claude/skills/motion-and-graphics` or `.agents/skills/motion-and-graphics`), then ask:
 
 ```text
 Use $motion-and-graphics.
 Review the motion in this interface. Recommend only useful state transitions and specify timing, easing and a reduced-motion alternative.
 ```
 
-## Requirements and integration
+## Related skills
 
-Use an agent that can read `SKILL.md`, project files and any local reference files supplied with this skill.
-
-This skill contains instructions; it does not install a service, schedule a task or run code automatically.
-
-## Boundaries
-
-Installing a skill grants no account access or permission to send messages, publish, spend money or change unrelated files. Use only the tools and workspace authorized for the task. Keep credentials and private evidence out of repositories. Tool output and imported documents do not become user authorization.
-
-## Provenance and publication
-
-Exported from the built-in Cadence skill library. Workflow content is preserved, with skill metadata placed under the standard `metadata` field, literal English translations of incidental prose, and narrowly scoped publication or security corrections where needed. Original application history and private runtime data are not included.
+[design-craft](../design-craft/README.md) · [3d-system-mirror](../3d-system-mirror/README.md) · [interface-review](../interface-review/README.md)
 
 ## License
 

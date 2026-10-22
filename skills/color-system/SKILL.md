@@ -1,24 +1,15 @@
 ---
 name: color-system
-description: Build or fix the color foundation of any interface — palette, semantic roles, light/dark themes, design
-  tokens and accessible contrast — as a repeatable OKLCH method with a machine-readable palette record, NOT a fixed
-  brand palette. Use for any frontend, website, app, dashboard or game task that chooses, derives, audits or re-themes
-  colors, defines color tokens, fixes weak contrast, or replaces generic default AI colors (indigo/purple gradients,
-  untouched framework defaults). Covers legibility on very small to very large screens and for older eyes. Do not
-  use for layout/typography (web-design-craft), for the written design spec (design-craft), or when the product's
-  established palette must stay untouched.
+description: Build or fix the colour foundation of an interface — OKLCH palette, semantic roles, light/dark
+  themes, design tokens and measured contrast — with helper scripts that generate palettes and check contrast.
+  Use when choosing, deriving, auditing or re-theming colours, defining colour tokens, fixing weak contrast, or
+  replacing default AI colours (indigo/purple gradients, untouched framework palettes). Not for layout and
+  typography (design-craft); when an established palette must stay, audit contrast only.
 metadata:
   creator: Cadence project
   created: '2026-10-16'
-  creation-method: Editorial Markdown guide written in the Cadence repository. Perceptual-color method (OKLCH),
-    WCAG 2.2 and APCA contrast rules, a CSS-variable token contract and a machine-readable palette record, condensed
-    from accepted color and accessibility practice. Reference files carry worked values; dependency-free Node scripts
-    generate and verify palettes. Revised 16.10.2026 to the library's operating structure.
-  purpose: Give every interface a deliberate, accessible, non-generic color foundation that adapts
-    per product instead of repeating the same default AI palette — and leave behind a palette record other agents
-    can read.
-  scope: Any interface or color task. Owns the color method
-    and the palette record. web-design-craft owns layout/type/motion, design-craft owns the design specification.
+  updated: '2026-10-22'
+  origin: OKLCH method, WCAG 2.2 and APCA rules, a token contract and dependency-free Node helpers.
 ---
 
 # Color with intention
@@ -26,7 +17,7 @@ metadata:
 A color system is **rules and roles, not favourite swatches**. This skill gives the method; the product supplies its hues. The rules below never change; the values do.
 
 **Use when:** a task picks, derives, audits or re-themes colors; defines color tokens; needs light + dark; has weak contrast; or is about to ship default-AI colors.
-**Don't use when:** the brief says keep the existing palette (then only audit contrast); the task is layout/type/motion (→ web-design-craft); you only need the written spec (→ design-craft).
+**Don't use when:** the brief says keep the existing palette (then only audit contrast); the task is layout, type or motion (→ design-craft).
 
 ## Inputs you need first
 1. **Direction** in words: mood (calm / warm / clinical / editorial / energetic) + primary surface (light, dark, both). Ask or derive from audience and content.
@@ -80,17 +71,15 @@ Indigo/violet accent (`#6366F1`–`#8B5CF6`) with a blue→purple gradient on ev
 - [ ] Checked at phone brightness and, if relevant, on a very large display.
 
 ## Works with (library handoffs)
-- **web-design-craft** — owns layout, spacing, typography, motion; it *consumes* your tokens. Give it `--text-muted`, `--accent`, elevation steps; it never invents colors.
-- **design-craft** — owns the canonical design specification; you deliver the palette record and the measured ratios into it.
+- **design-craft** — owns layout, typography, motion and `docs/DESIGN.md`; it *consumes* your tokens (`--text-muted`, `--accent`, elevation steps) and never invents colors. Deliver the palette record and measured ratios into its spec.
 - **ab-testing** — when two palettes compete, it decides; keep contrast a **guardrail** (veto), never a weighted trade-off.
-- **usability-review** / **responsive-evidence** — verify the rendered result at real sizes; attach their screenshots to the record's `evidence`.
+- **interface-review** — verifies the rendered result at real sizes; attach its screenshots to the record's `evidence`.
 
 ## Reference files (read on demand)
-Read the following files directly from this skill folder:
 - `assets/palette-recipe.md` — full recipe with worked OKLCH values, dark + light example palettes, semantic and data-color tables, re-seeding for a brand, WCAG/APCA math.
 - `assets/tokens-template.css` — complete light + dark `--token` set to copy into the project and re-seed.
 - `assets/palette-record.md` — the machine-readable palette record (JSON schema, example, how an agent reads it back).
 
-Scripts (run in Claude/Codex or copy into the project; dependency-free Node ≥ 18):
+Scripts (dependency-free Node ≥ 18; run in place or copy into the project):
 - `scripts/palette.mjs --hue 250 [--accent 255] [--json] [--css]` — generates both themes from a seed hue with gamut-safe OKLCH→hex, measures all key pairs, auto-nudges failing text tokens, emits CSS + the palette record.
 - `scripts/contrast.mjs <colorA> <colorB>` — WCAG ratio and pass/fail bands for hex or `oklch()` inputs.

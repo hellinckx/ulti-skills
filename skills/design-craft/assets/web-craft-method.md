@@ -1,6 +1,6 @@
 # Web craft method — worked values
 
-Long-form companion to `SKILL.md`. It shows the Direction-first method with concrete scales and patterns. Every number here is an **example range to adapt**, not a fixed brand. Change the direction and the values follow; the structure does not.
+Read on demand from `SKILL.md`. It shows the Direction-first method with concrete scales and patterns. Every number here is an **example range to adapt**, not a fixed brand. Change the direction and the values follow; the structure does not.
 
 ## Step 1 — Write the direction
 
@@ -134,5 +134,5 @@ Reflow, don't merely shrink: re-order by importance, keep display leading tight 
 1. Rewrite the **direction** (intent, adjectives, density, signature move).
 2. Keep the spacing scale and type scale **structure**; adjust base/ratio only if the new density demands it.
 3. Keep the section catalog; pick the subset the content needs and alternate blocks.
-4. Pull exact palette from `color-system`; record direction, scales, section inventory and component list in the `design-craft` spec.
+4. Pull exact palette from `color-system`; record direction, scales, section inventory and component list in `docs/DESIGN.md`.
 5. The skeleton, scales and checks are unchanged — that is the point.

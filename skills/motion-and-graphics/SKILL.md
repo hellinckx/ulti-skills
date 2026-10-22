@@ -1,20 +1,15 @@
 ---
 name: motion-and-graphics
-description: Decide which interface motion is worth having and build fast, accessible 2D and 3D graphics — timing and
-  easing, reduced-motion paths, SVG and Canvas 2D, WebGL and three.js / React Three Fiber scenes, readable canvas
-  text in 3D, game HUDs, frame-rate-independent loops and measured performance budgets. Use for animation,
-  transitions, charts drawn by hand, canvas games, 3D scenes, visualisations and any "make it feel alive" request.
-  Do not use for static layout and typography (web-design-craft, design-craft), palettes (color-system), or a full
-  3D mirror of a live system (3d-system-mirror builds on this skill).
+description: Decide which interface motion is worth having and build fast, accessible 2D and 3D graphics —
+  timing and easing, reduced-motion paths, SVG and Canvas 2D, three.js / React Three Fiber scenes, readable text
+  in 3D, game HUDs, frame-rate-independent loops and measured performance budgets. Use for animation,
+  transitions, hand-drawn charts, canvas games, 3D scenes and any "make it feel alive" request. Not for static
+  layout (design-craft) or palettes (color-system).
 metadata:
   creator: Cadence project
   created: '2026-09-30'
-  creation-method: Editorial Markdown guide written in the Cadence repository; no external template or executable
-    scripts. Expanded 18.10.2026 with 3D scene practice, performance budgets and verification lessons from building
-    a procedural three.js office.
-  purpose: Build accessible, performant motion and graphics that explain something and run smoothly on ordinary
-    hardware.
-  scope: Interface motion, 2D and 3D graphics and game UI on the web and in desktop shells (Electron, Tauri).
+  updated: '2026-10-22'
+  origin: Interface motion practice plus 3D lessons from building a procedural three.js office.
 ---
 
 # Motion and graphics
@@ -80,5 +75,5 @@ metadata:
 
 ## Works with
 - `3d-system-mirror` — a complete recipe for mirroring a live system as a 3D world on top of these practices.
-- `design-craft` and `web-design-craft` — direction and layout the motion supports; `color-system` — palettes and contrast for scenes and HUDs.
-- `responsive-evidence` and `usability-review` — viewport proof and task walkthroughs for interfaces with motion.
+- `design-craft` — direction, layout and motion bands this skill builds on; `color-system` — palettes and contrast for scenes and HUDs.
+- `interface-review` — viewport screenshots and task walkthroughs for interfaces with motion.

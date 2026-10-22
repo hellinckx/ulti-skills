@@ -1,16 +1,16 @@
 ---
 name: iso-world-site
-description: "Build websites in the \"iso-world\" style - a live, hard-edged isometric 3D diorama that runs behind the page and that the camera travels through as you scroll, flat-shaded blocks with ink outlines and hatch stripes, painted mono labels, huge tight uppercase grotesk headlines, soft rounded glass panels and animated isometric illustrations. Works for any topic (a bakery, a law firm, a SaaS tool, a hospital, a band, a school) because the subject is turned into a working miniature system. Use this skill whenever the user asks for a \"3D website\", \"isometric website\", a site \"with 3D animations / 3D renders\", a \"fett geile 3D Webseite\", a scroll-driven 3D landing page, or wants an existing site redesigned in this look, even if they don't name the style. No WebGL, no libraries: plain HTML, CSS and canvas."
+description: Build a website in the "iso-world" style — a hard-edged isometric diorama drawn on canvas behind
+  the page that the camera travels through on scroll, flat-shaded blocks with ink outlines and hatch stripes,
+  mono machine labels, huge tight uppercase headlines and soft glass panels — turning any subject (bakery, law
+  firm, SaaS, hospital) into a working miniature. Use when the user asks for an isometric or scroll-driven 3D
+  website, a "3D website" without another style in mind, or a redesign in this look. Plain HTML, CSS and canvas;
+  no WebGL or libraries.
 metadata:
   creator: hellinckx
   created: '2026-10-21'
-  creation-method: Written description of a website style and its build workflow. The collection contains the
-    method only; it ships no engine code, template, demo page or images.
-  purpose: A recognisable 3D look for websites without WebGL or libraries, where the subject becomes a working
-    isometric miniature that the camera travels through on scroll while the content stays calm and typographic.
-  scope: Any website that should show its subject as a scroll-driven isometric diorama. Pairs with color-system
-    for palettes, web-design-craft for composition, motion-and-graphics for other 3D work, and responsive-evidence
-    for verification.
+  updated: '2026-10-22'
+  origin: Written description of a website style and its build workflow; no engine code, template or images.
 ---
 
 # iso-world site

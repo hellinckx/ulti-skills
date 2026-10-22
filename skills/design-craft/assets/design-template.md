@@ -18,4 +18,4 @@ Per surface: reading order, primary task, information hierarchy and composition.
 Tone, terminology, localisation and formatting, representative real content, accessible names, semantic structure, keyboard/screen-reader behaviour and measured contrast. Separate verified results from planned checks.
 
 ## Transfer and verification
-Installation/start instructions, token/component/asset dependencies, licences, what to copy or adapt, and a minimal recipe for reproducing the style without needing the original app. Link the usability report and `docs/qa/responsive/<run-id>/report.md`; identify tested routes/states, screenshot files, actual environment/build, known defects and unsupported classes.
+Installation/start instructions, token/component/asset dependencies, licences, what to copy or adapt, and a minimal recipe for reproducing the style without needing the original app. Link the interface-review report (`docs/qa/<run-id>/report.md`); identify tested routes/states, screenshot files, actual environment/build, known defects and unsupported classes.

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// web-design-craft — fluid modular type scale + spacing scale. Dependency-free, Node >= 18.
+// design-craft — fluid modular type scale + spacing scale. Dependency-free, Node >= 18.
 //
 //   node type-scale.mjs --base 16 --ratio 1.25 [--ratio-sm 1.2] [--min-vw 360] [--max-vw 1280]
 //                       [--steps -2:6] [--unit 4] [--css] [--json]
@@ -7,7 +7,7 @@
 // For each step n, size at the small viewport = base·ratio_sm^n and at the large viewport =
 // base·ratio^n; the output is a CSS clamp() that interpolates linearly between the two viewports:
 //   clamp(min, intercept(rem) + slope(vw), max)   slope = (max−min)/(maxVw−minVw)·100
-// Default prints a table; --css prints :root variables; --json prints the record blocks.
+// Default prints a table; --css prints :root variables; --json prints the scales as JSON for docs/DESIGN.md.
 
 import path from "node:path";
 import { fileURLToPath } from "node:url";

@@ -1,25 +1,15 @@
 ---
 name: load-stress-testing
-description: Prove whether an app survives real users and real data before launch — build a production-like staging,
-  seed realistic data at volume into a real database, drive core user paths with a measured Playwright harness,
-  run baseline / ramp / soak / spike / stress profiles, read p50/p95/p99 latency, throughput, error rate and saturation
-  against thresholds declared before the run, and pin a failure to the right layer (architecture/data-model vs infrastructure,
-  the under-500k-rows rule) in a machine-readable verdict. Use for any load, stress, performance, scalability, latency,
-  throughput, capacity, soak, spike or benchmark task, for "will it scale?", and before a marketing or broadcast
-  push. Do not use for functional testing, for security robustness checks (security-testing verifies limits exist;
-  this skill measures behaviour at and beyond them), or against production without written consent.
+description: Find out whether an app holds under real data volume and concurrent users before launch —
+  production-like staging, realistic seed data at volume, measured user paths, baseline / ramp / soak / spike /
+  stress profiles, p50/p95/p99 against thresholds declared in advance, and a verdict that pins the failing layer
+  (architecture vs infrastructure). Use for load, stress, performance, scalability, capacity or "will it scale?"
+  questions. Not for functional tests, or against production without written consent.
 metadata:
   creator: Cadence project
   created: '2026-10-16'
-  creation-method: Editorial Markdown guide written in the Cadence repository. Distils accepted load- and performance-engineering
-    practice (realistic data generation, open/closed concurrency models, Little's Law, latency percentiles, the
-    USE method, the architecture-vs-infrastructure diagnosis) into an adaptable method, a Playwright measurement
-    pattern, a machine-readable result schema and a dependency-free Node script that computes percentiles and applies
-    the verdict rules. Revised 16.10.2026 to the library's operating structure.
-  purpose: Give every app a deliberate way to find out, before launch, whether it holds under production-like
-    data and concurrent load — and to decide whether to refactor or to buy servers, with evidence.
-  scope: Any load, stress, performance, scalability or capacity task. Owns the load/performance method and the verdict; security-testing owns hostile-input robustness, ab-testing
-    decides whether two measured results differ.
+  updated: '2026-10-22'
+  origin: Load and performance engineering practice (Little's Law, percentiles, USE method) with a dependency-free verdict helper.
 ---
 
 # Prove it holds under load
@@ -89,13 +79,12 @@ Load-testing an empty or ten-row database · uniform random seed data that hides
 - **security-testing** — verifies that limits (size, depth, timeout, rate) exist; you measure behaviour at and beyond them and the recovery.
 - **ab-testing** — decides whether two builds' latency distributions really differ before anyone acts on it; your metrics become its primary/guardrail inputs.
 - **ai-app-engineering** — model/tool latency and token cost are load dimensions of AI features; it owns the architecture, you own the measurement.
-- **project-structure / complete-app** — seed scripts, the harness and result records live in the project's test/ops structure; a passing verdict joins the release acceptance.
+- **complete-app** — seed scripts, the harness and result records live in the project's test/ops folders; a passing verdict joins the release acceptance.
 
 ## Reference files (read on demand)
-Read the following files directly from this skill folder:
 - `assets/method.md` — staging checklist, data volumes and distributions, the idempotent-seed pattern, the Playwright harness, profiles with numbers, concurrency modelling, metric math (percentiles, RPS, USE), the root-cause checklist.
 - `assets/result-schema.md` — the result JSON schema, a worked failing-architecture example, threshold defaults and the machine-applicable verdict rules.
 
-Scripts (run in Claude/Codex or copy into the project; dependency-free Node ≥ 18):
+Scripts (dependency-free Node ≥ 18; run in place or copy into the project):
 - `scripts/verdict.mjs percentiles latencies.(csv|json) [--key ms]` — count, mean, p50/p95/p99, min/max from raw latencies (linear interpolation).
 - `scripts/verdict.mjs verdict run.json [--json]` — applies the verdict rules to a result record, reports which thresholds and rules fired, compares with the recorded `verdict`/`root_cause_class`; exit 1 on fail or mismatch.

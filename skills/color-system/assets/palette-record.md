@@ -86,4 +86,4 @@ Field rules:
 2. If `checks.older_audience_target` is set, every `body-text` pair must meet that target, not 4.5.
 3. To re-theme: change `seed.*_hue`, regenerate with the script, diff `pairs` — only `L` nudges should change pass/fail, never the structure.
 4. A `clipped: true` token is fine for UI; for brand-critical colors, lower `C` in the recipe instead of relying on the clip.
-5. Null `checks` are open work for usability-review / responsive-evidence; do not report the palette as finished while `no_color_alone` or `focus_ring_distinct` is null.
+5. Null `checks` are open work for interface-review; do not report the palette as finished while `no_color_alone` or `focus_ring_distinct` is null.

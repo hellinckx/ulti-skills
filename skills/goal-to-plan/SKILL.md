@@ -1,52 +1,49 @@
 ---
 name: goal-to-plan
-description: Turn a short, vague goal ("I want an app for X", a list of features, a look) into a complete, ordered
-  plan — users, explicit and implicit requirements, design, prerequisites, a dependency graph and measurable
-  acceptance criteria — with visible assumptions instead of a round of questions. Use when someone describes what
-  they want rather than how, before building a new product or a large feature, or when a backlog must be derived
-  from a goal. Do not use for a small, fully specified change, or to prepare a whole new venture folder with
-  research and handoff files (venture-blueprint).
+description: Turn a short or vague goal ("I want an app for X", a dictated idea, a feature list, a look) into an
+  honest, ordered plan — idea check, users, explicit and implicit requirements, prerequisites, a dependency graph
+  and measurable acceptance criteria — with visible assumptions instead of a round of questions. Use when someone
+  describes what they want rather than how, before building a new product or large feature, or when a backlog must
+  be derived from a goal. Not for a small, fully specified change.
 metadata:
   creator: Cadence project
   created: '2026-10-10'
-  creation-method: Editorial Markdown guide written in the Cadence repository from the user's stated way of working
-    with Cadence; no external template or executable scripts.
-  purpose: People say what they want to achieve, not how. The agent does the product thinking, requirements
-    engineering and planning itself.
-  scope: Planning, orchestration and coordination work in any project.
+  updated: '2026-10-22'
+  origin: Absorbs the idea check and research rules of the former venture-blueprint skill.
 ---
 
 # From a goal to a complete plan
 
-Assume the person will describe only the goal, a few features, a feeling for the design or what they want to see — rarely how it should work, what it needs first or how parts fit together. That is normal. Your job is to think it through like an experienced product owner, architect and designer together, and to plan everything a finished result needs.
+People describe the goal, a few features and a feeling for the design — rarely how it works, what it needs first or how the parts fit. Think it through like a product owner, architect and designer together, and plan everything a finished result needs, no more.
 
-## 1. Understand before planning
-- Read the request literally and for intent: who will use the result, what problem it solves, what "done" looks like for them. State that as one product goal.
-- Inspect the project read-only: existing code, structure, stack, rules (`AGENTS.md`, `PRODUCT.md`, docs), previous plans, open decisions, the project memory and earlier processes. Build on what exists; never plan from scratch when a base is there.
-- Identify the **kind of product** (desktop tool, web app, website, API, automation, game, data pipeline, internal admin …) and its context (single user, team, company, customers).
+## 1. Understand
+- Separate the request into **goal** (why), **example** (what it could be — replaceable), **must-haves**, **constraints** (money, tools, accounts) and **meta-requests** (models, handoff, freedom). State the goal as one sentence.
+- Inspect the project read-only: code, stack, `AGENTS.md`/`CLAUDE.md`, docs, earlier plans, open decisions. Build on what exists.
+- Name the kind of product (desktop tool, web app, site, API, automation, game, pipeline) and its context (one user, team, customers).
 
-## 2. Expand the request into requirements
-Write down, in plain language, everything the goal implies:
-- **Explicit features** from the request, each as a user-visible outcome with measurable acceptance criteria.
-- **Implicit features** a person expects without saying: navigation and overview, create/edit/delete with confirmation, search and filter for growing lists, central settings, persistence that survives restarts, import/export or backup when data matters, help and first-start guidance, error and empty states, notifications, history when data changes, sign-in and roles only when several people or secrets are involved.
-- **Design:** follow the established product identity or derive a fitting direction from audience and purpose. Plan the canonical transferable design specification, main screens, states, themes and language. Design-craft owns the specification, usability-review owns observed task flows, responsive-evidence owns the four-class screenshot report.
-- **Non-functional requirements:** security (no secrets in code or logs, input validation, least privilege), privacy (which data goes where, GDPR), accessibility, performance targets, reliability (atomic saves, recovery), offline behaviour, maintainability (clean English folder structure, tests).
-- **Operations:** how it is installed, started (one documented command), configured, updated and backed up.
+## 2. Check the idea honestly (new products only)
+- Sketch 2–4 product shapes and compare them on goal fit, feasibility with the available stack, running cost, legal/platform risk and time to the first visible result. Pick one and say why in a paragraph.
+- Research what memory cannot confirm — platform APIs, terms of service, licences, privacy rules, prices — and cite sources with dates. Where a wish conflicts with rules (scraping instead of an API, bypassing captchas), plan the honest alternative.
+- If no shape is worth building, say so with reasons and stop. An honest "no" beats a polished bad plan.
 
-## 3. Prerequisites and dependencies
-- For every feature, list what must exist first: data model, storage, project scaffolding and structure, shared UI shell and design tokens, settings infrastructure, API clients or provider connections, authentication, test setup, seed or sample data for development (never shown as real data).
-- Draw the dependency graph: foundations → shared services → features → integration → polish → release. Features that do not depend on each other can run in parallel in separate paths.
-- Explain how features relate (shared data, one feeding another, common settings) and plan the shared parts once instead of per feature.
-- Put risky or unknown parts early (spikes, research steps) so later work rests on verified ground.
+## 3. Expand into requirements
+- **Explicit features**, each as a user-visible outcome with measurable acceptance criteria.
+- **Implicit features** a person expects without saying — the complete-app checklist covers them (navigation, states, settings, persistence, help, recovery). Include only what this product actually needs.
+- **Non-functional:** security (no secrets in code or logs, validation, least privilege), privacy (which data goes where), accessibility, performance targets, reliability, offline behaviour.
+- **Operations:** install, one documented start command, configuration, updates, backup.
 
-## 4. Decide, don't stall
-- Make safe, reversible assumptions for everything the person did not specify and list them visibly (assumptions). Choose established defaults: mainstream stack already in the project or a simple, well-supported one; local data storage unless sharing is required; the product's language for the UI with the other language one click away.
-- Ask only fundamental questions that change the plan significantly and cannot be reversed cheaply (for example: who the users are when it decides between a local tool and a hosted service, paid external services, legal obligations). Ask them early, with 2–4 concrete options and a recommendation; continue all independent work meanwhile.
-- Never ask for details you can decide with good craft (colours, layouts, field names, folder names, libraries of equal quality).
+## 4. Prerequisites and order
+- For each feature list what must exist first: data model, storage, scaffolding, shared UI shell and tokens, settings, provider connections, auth, test setup, development fixtures (never shown as real data).
+- Order: foundations → shared services → features → integration → polish → release. Independent features can run in parallel. Plan shared parts once.
+- Put risky unknowns first (spikes) so later work rests on verified ground. The first visible, startable result comes early.
 
-## 5. Plan output
-- A product goal, an ordered backlog of user-visible outcomes with acceptance criteria, the dependency order, quality gates (reviews, visual checks, tests) and a final release with an end-to-end acceptance against the original goal.
-- Size the plan to the goal: a small tool needs few steps, a full product needs foundations, features, settings, help, tests and release. Do not inflate; do not leave out what a finished product needs.
-- Every work step names the files or areas it touches, what it delivers, how it is verified, and which earlier results it builds on.
-- Mark every interface-related implementation, integration and verification step explicitly as frontend/UI in its task description, including otherwise vague steps such as checkout or signup. This makes the relevant quality skills discoverable after delegation. Include the canonical design path and usability/responsive evidence paths in the handoff; do not copy their whole guides into each task. Keep unrelated backend steps separate.
-- The finished plan must let someone who never saw the request understand what will be built and why each step exists.
+## 5. Decide, don't stall
+- Make safe, reversible assumptions for everything unspecified and list them visibly. Use established defaults: the project's stack or a simple, well-supported one; local storage unless sharing is required.
+- Ask only questions that change the plan significantly and are expensive to reverse (who the users are, paid services, legal obligations) — early, with 2–4 options and a recommendation, while independent work continues.
+- Never ask about things good craft decides (colours, layouts, field and folder names, equivalent libraries).
+
+## 6. Plan output
+- Goal, chosen shape and why, assumptions, an ordered backlog of user-visible outcomes with acceptance criteria, dependency order, quality gates and a final end-to-end acceptance against the original goal.
+- Each step names the files or areas it touches, what it delivers, how it is verified and what it builds on. Mark UI steps as frontend so design-craft and interface-review get applied.
+- Size it to the goal: a small tool gets few steps. No "TBD", no step without a check.
+- Someone who never saw the request must understand what will be built and why each step exists. When the work will be handed to another session or agent, write the plan to a file (e.g. `docs/PLAN.md`) with the exact next step at the top.

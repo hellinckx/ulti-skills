@@ -1,27 +1,15 @@
 ---
 name: security-testing
-description: Authorized, defensive security testing of your OWN systems — web apps, APIs, desktop/Electron
-  apps, services — to find, reproduce and FIX vulnerabilities and abuse cases before users or attackers hit them.
-  A repeatable workflow (scope → threat model → simulate safely → confirm → fix → regression test → document), a
-  broad vulnerability catalog with the smallest non-destructive proof and the fix pattern per class, a CVSS-like
-  severity and a machine-readable findings file with a release gate. Use for security reviews, vulnerability hunting,
-  pentest simulation, hardening, threat modeling, or auditing injection / XSS / CSRF / SSRF / auth / authorization
-  / IDOR / upload / secrets / misconfiguration / rate-limiting / Electron IPC risks. Strictly your own systems in
-  an environment you control; never for attacking third parties, malware, or detection evasion — refuse those. Deep
-  load/capacity measurement belongs to load-stress-testing.
+description: Authorized, defensive security testing of systems the user owns — web apps, APIs, desktop/Electron
+  apps, services — to find, reproduce and fix vulnerabilities — scope, threat model, smallest non-destructive
+  proof, fix, regression test, scored findings file and a release gate. Use for security reviews, hardening,
+  threat modelling or auditing injection, XSS, CSRF, SSRF, auth, access control/IDOR, uploads, secrets,
+  misconfiguration, rate limits and Electron IPC. Never for third-party targets, malware or detection evasion.
 metadata:
   creator: Cadence project
   created: '2026-10-16'
-  creation-method: Editorial Markdown guide written in the Cadence repository. Defensive application-security methodology
-    — threat modeling, vulnerability-class catalog with safe simulation / detection / fix / regression patterns,
-    CVSS-like severity, machine-readable findings schema and release gate — plus a dependency-free Node script that
-    scores severity and validates findings files. No attack tooling shipped. Revised 16.10.2026 to the library's
-    operating structure.
-  purpose: Find, reproduce and fix security defects and abuse cases in the owner's own systems before
-    real users or attackers encounter them, with every finding closed by a fix and a regression test and recorded
-    so a release gate can read it.
-  scope: Security, vulnerability, pentest-simulation, audit and hardening tasks on the owner's own systems. Strictly defensive, limited to systems the owner controls. Cross-references load-stress-testing (resilience
-    under load) and ab-testing (experiment-integrity abuse cases).
+  updated: '2026-10-22'
+  origin: Defensive application-security method with a severity and findings validator; no attack tooling.
 ---
 
 # Test your own systems before attackers do
@@ -106,13 +94,12 @@ Promoting scanner output to findings without reproduction · "fixed" with no reg
 - **load-stress-testing** — you verify that limits (size, depth, timeout, rate) *exist*; it measures behaviour *at and beyond* them (soak, spike, breakpoint).
 - **ab-testing** — experiment assignment and reward flows are business-logic abuse surfaces; security regressions are hard guardrails there, never weighted.
 - **ai-app-engineering** — prompt-injection and tool-output-as-input belong on your entry-point list; it owns the agent architecture, you own the abuse cases and tests.
-- **project-structure / complete-app** — the regression tests and the findings file live in the project's test and docs structure; the release gate joins the acceptance checklist.
+- **complete-app** — the regression tests and the findings file live in the project's test and docs folders; the release gate joins the acceptance checklist.
 
 ## Reference files (read on demand)
-Read the following files directly from this skill folder:
 - `assets/vulnerability-catalog.md` — every class with safe simulation, detection, fix pattern and regression test, plus the desktop/Electron checklist.
 - `assets/severity-and-findings.md` — severity factors and formula, bands, the full findings schema, status lifecycle, parse rules and the release gate.
 
-Scripts (run in Claude/Codex or copy into the project; dependency-free Node ≥ 18):
+Scripts (dependency-free Node ≥ 18; run in place or copy into the project):
 - `scripts/severity.mjs score --exploitability 0.9 --conf 0.9 --integ 0.3 --avail 0.1 --scope 0.6` — score + band from factors.
 - `scripts/severity.mjs validate findings.json [--gate high]` — schema, enum, band↔score and factor↔score consistency, lifecycle rules (`fixed`/`verified` need `test`, `accepted-risk` needs `notes` + `owner`), duplicate ids, and the release gate (exit 1 on failure).
